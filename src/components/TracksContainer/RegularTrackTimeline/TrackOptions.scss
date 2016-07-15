@@ -1,0 +1,75 @@
+@import '../../../scss/variables.scss';
+
+.TrackOptions__container {
+    color: $timeLineColor;
+    position: relative;
+    overflow: hidden;
+    font-size: 35px;
+    // line-height: 100px;
+    & > * {
+        position: absolute;
+    }
+}
+
+
+
+.TrackOptions__moreOptions {
+    // color: $timeLineColor;
+    right: calc(50% - 17.5px);
+    transition: transform 0.5s ease-out, right 0.5s ease-out;
+
+    &:hover {
+        color: $fontColor;
+        right: 5px;
+        cursor: pointer;
+        transform: rotate(270deg);
+    }
+
+}
+
+.TrackOptions__prevMarkerSelect {
+    // color: $timeLineColor;
+    padding: 0 20px;
+    left: 0;
+    transition: left 0.5s ease-out;
+
+    &:hover {
+        color: $fontColor;
+        cursor: pointer;
+    }
+}
+
+.TrackOptions__nextMarkerSelect {
+    // color: $timeLineColor;
+    right: 0;
+    padding: 0 20px;
+    transition: right 0.5s ease-out;
+
+    &:hover {
+        color: $fontColor;
+        cursor: pointer;
+    }
+}
+
+
+.TrackOptions__moreOptions:hover ~ .TrackOptions__hiddenControlsCont {
+    top: 0;
+}
+
+.TrackOptions__moreOptions:hover ~ .TrackOptions__nextMarkerSelect {
+    right: -100px;
+}
+
+.TrackOptions__moreOptions:hover ~ .TrackOptions__prevMarkerSelect {
+    left: -100px;
+}
+
+.TrackOptions__hiddenControlsCont {
+    // position: absolute;
+    top: 200%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    transition: top 0.5s ease-out;
+
+}

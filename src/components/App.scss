@@ -1,0 +1,7 @@
+@import '../scss/variables.scss';
+
+#app {
+    background-color: $appBlackBackground;
+    color: $appBlackBackground;
+    overflow: hidden;
+}

@@ -1,0 +1,29 @@
+@import '../scss/variables.scss';
+
+
+.Video__container {
+    line-height: 0;
+    position: relative;
+}
+
+.Video__videoElement {
+    z-index: 10;
+}
+
+.Video__newTrackIcon {
+}
+
+.Video__timecode {
+    position: absolute;
+    z-index: 10000;
+    line-height: calc(#{$TC-font-size} * 1.2);
+    transform: translate(-50%, -50%);
+    top: 10%;
+    left: 50%;
+    color: white;
+    font-size: $TC-font-size;
+    font-family: monospace;
+    font-weight: bold;
+    background-color: $TCbackground;
+    padding: 0 5px;
+}

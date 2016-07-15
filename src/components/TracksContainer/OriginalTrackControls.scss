@@ -1,0 +1,20 @@
+@import '../../scss/variables.scss';
+
+.OriginalTrackControls_container {
+    border-left: 1px solid $appBlackBackground;
+
+
+    & button {
+        text-shadow: none;
+        background-color: $buttonColor;
+        border: 0 none;
+        color: $appBlackBackground;
+        border-radius: 0 !important;
+    }
+    & button:hover {
+        background-color: $buttonColorDarker;
+    }
+    & .btn-group:not(:last-of-type) {
+        border-right: 1px solid $appBlackBackground;
+    }
+}

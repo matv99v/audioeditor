@@ -1,0 +1,12 @@
+@import './variables.scss';
+
+
+.no-gutter > [class*='col-'] {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+
+
+
+  // (0; 768) - [768; 992) - [1200; +inf)

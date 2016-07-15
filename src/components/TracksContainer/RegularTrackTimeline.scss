@@ -1,0 +1,19 @@
+@import '../../scss/variables.scss';
+
+.RegularTrackTimeline__container {
+    background-color: $timeLineColor;
+    line-height: 0;
+    overflow: hidden;
+    // position: relative;
+}
+
+.RegularTrackTimeline__container_activeTrack {
+    background-color: $buttonColor;
+    line-height: 0;
+    overflow: hidden;
+    // position: relative;
+}
+
+.RegularTrackTimeline__innerContainer {
+    position: relative;
+}

@@ -1,0 +1,10 @@
+@import '../scss/variables.scss';
+
+
+.TracksContainer {
+    background-color: $timeLineColor;
+}
+
+.TracksContainer__singleTrackCont {
+    border-bottom: 1px solid $appBlackBackground;
+}

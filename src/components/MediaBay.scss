@@ -1,0 +1,28 @@
+@import '../scss/variables.scss';
+
+.MediaBay__container {
+    font-family: monospace;
+    font-size: 11px;
+    color: $fontColor;
+    padding: 15px;
+
+    table {
+        border: none;
+    }
+
+    table thead{
+        color: white;
+    }
+
+    table td, table th  {
+        border: none !important;
+        background-color: $rulerColor;
+    }
+
+    input {
+        color: $fontColor;
+        background-color: $rulerColor;
+        border: none;
+        border-radius: 0 !important;
+    }
+}

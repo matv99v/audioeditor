@@ -1,0 +1,39 @@
+@import '../scss/variables.scss';
+
+.Ruler__container {
+    height: $rulerPointerSize;
+    position: relative;
+    background-color: $rulerColor;
+}
+
+.Ruler__pointer {
+    width: 0;
+    height: 0;
+    border-left: $rulerPointerSize solid transparent;
+    border-right: $rulerPointerSize solid transparent;
+    border-top: $rulerPointerSize solid $pointerColor;
+    box-sizing: content-box;
+    position: absolute;
+    top: 0;
+    transform: translateX(-50%);
+    z-index: 2;
+}
+
+.Ruler__line {
+    border-left: 2px solid $pointerColor;
+    display: inline-block;
+    transform: translate(-1px, -5px);
+}
+
+.Ruler__statusContainer {
+    font-size: 11px;
+    line-height: $TC-font-size;
+    font-family: monospace;
+    color: $buttonColorDarker;
+    overflow: hidden;
+    display: block;
+    height: $TC-font-size;
+    text-align: center;
+
+
+}

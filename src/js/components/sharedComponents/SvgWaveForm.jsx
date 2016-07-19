@@ -3,10 +3,10 @@ import {Col}   from 'react-bootstrap/lib';
 import {Row}   from 'react-bootstrap/lib';
 import {Grid}   from 'react-bootstrap/lib';
 
-import getColorById from '../../js/getColorById.js';
+import getColorById from '../../helpers/getColorById.js';
 import './SvgWaveForm.scss';
 
-import arrayToDescreteExtremums from '../../js/arrayToDescreteExtremums';
+import arrayToDescreteExtremums from '../../helpers/arrayToDescreteExtremums';
 
 export default class SvgWaveForm extends React.Component {
     render() {

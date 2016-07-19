@@ -1,7 +1,7 @@
 import React from 'react';
 import './TrackNumber.scss';
 
-import getColorById from '../../../js/getColorById.js';
+import getColorById from '../../helpers/getColorById.js';
 
 export default class TrackNumber extends React.Component {
     render() {

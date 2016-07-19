@@ -1,8 +1,8 @@
-@import '../../scss/variables.scss';
+@import '../../../scss/variables.scss';
 
-.OriginalTrackControls_container {
+.RegularTrackControls_container {
     border-left: 1px solid $appBlackBackground;
-
+    background-color: $timeLineColor;
 
     & button {
         text-shadow: none;

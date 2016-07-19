@@ -1,7 +1,7 @@
 import React from 'react';
 import './TrackMarker.scss';
 
-import getColorById from '../../../js/getColorById.js';
+import getColorById from '../../../helpers/getColorById.js';
 
 
 

@@ -8,7 +8,7 @@ var path = require('path');
 module.exports = {
   context: path.resolve(__dirname, "src"),
   devtool: debug ? "inline-sourcemap" : null,
-  entry: ["webpack/hot/dev-server", "./main.js"],
+  entry: ["webpack/hot/dev-server", "./js/main.js"],
   module: {
     loaders: [
       {

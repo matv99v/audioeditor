@@ -18,7 +18,7 @@ export default class $$$test extends React.Component {
         const barWidth    = this.props.stateData.barWidth;
         const trackHeight = this.props.stateData.trackHeight;
         const windowWidth = this.props.stateData.windowWidth;
-        const peaks       = this.props.stateData.peaksOpt;
+        const peaksRaw    = this.props.stateData.peaksRaw;
 
         return (
             <div>
@@ -30,7 +30,7 @@ export default class $$$test extends React.Component {
                                 barWidth    = {barWidth}
                                 trackHeight = {trackHeight}
                                 windowWidth = {windowWidth}
-                                peaks       = {peaks} />
+                                peaksRaw    = {peaksRaw} />
                         </Col>
                     </Row>
 
@@ -40,7 +40,7 @@ export default class $$$test extends React.Component {
                                 barWidth    = {barWidth}
                                 trackHeight = {trackHeight}
                                 windowWidth = {windowWidth}
-                                peaks       = {peaks} />
+                                peaksRaw    = {peaksRaw} />
                         </Col>
 
                         <Col xs={3} sm={3} md={3} style={styleObject}>
@@ -48,7 +48,7 @@ export default class $$$test extends React.Component {
                                 barWidth    = {barWidth}
                                 trackHeight = {trackHeight}
                                 windowWidth = {windowWidth}
-                                peaks       = {peaks} />
+                                peaksRaw    = {peaksRaw} />
                         </Col>
                     </Row>
 

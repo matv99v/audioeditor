@@ -1,0 +1,25 @@
+@import '../scss/variables.scss';
+
+
+.AddNewTrackBtn__container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 35px;
+    transition: background-color 0.5s ease-out;
+    cursor: pointer;
+    &:hover {
+        background-color: $rulerColor;
+    }
+
+    .AddNewTrackBtn__plus {
+        color: $timeLineColor;
+        transition: color 0.75s ease-out, transform 0.25s ease-out;
+
+    }
+
+    &:hover .AddNewTrackBtn__plus {
+        color: $fontColor;
+        transform: rotate(90deg);
+    }
+}

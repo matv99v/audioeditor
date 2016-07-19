@@ -7,13 +7,9 @@ import {Grid} from 'react-bootstrap/lib';
 import {Col}  from 'react-bootstrap/lib';
 import {Row}  from 'react-bootstrap/lib';
 
-
-import Slider      from './TrackControlsShared/Slider.jsx';
-import VolumeMeter from './TrackControlsShared/VolumeMeter.jsx';
-import TrackNumber from './TrackControlsShared/TrackNumber.jsx';
-
-
-
+import Slider      from '../sharedComponents/Slider.jsx';
+import VolumeMeter from '../sharedComponents/VolumeMeter.jsx';
+import TrackNumber from '../sharedComponents/TrackNumber.jsx';
 
 import './OriginalTrackControls.scss';
 
@@ -33,7 +29,7 @@ export default class OriginalTrackControls extends React.Component {
                     <Row className='no-gutter' >
 
                         <Col xs={1} >
-                            <TrackNumber id={this.props.id} trackHeight={this.props.trackHeight} />
+                            <TrackNumber trackHeight={this.props.trackHeight} />
                         </Col>
 
                         <Col xs={10} >

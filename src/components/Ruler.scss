@@ -28,12 +28,21 @@
 .Ruler__statusContainer {
     font-size: 11px;
     line-height: $TC-font-size;
+    height: $TC-font-size;
     font-family: monospace;
     color: $buttonColorDarker;
     overflow: hidden;
     display: block;
-    height: $TC-font-size;
     text-align: center;
+}
 
-
+.Ruler__timeStamps {
+    border-left: 1px solid $buttonColorDarker;
+    font-size: 10px;
+    font-family: monospace;
+    bottom: 0;
+    color: $buttonColor;
+    position: absolute;
+    display: inline-block;
+    padding-left: 1px;
 }

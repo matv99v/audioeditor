@@ -4,14 +4,11 @@
     background-color: $timeLineColor;
     line-height: 0;
     overflow: hidden;
-    // position: relative;
 }
 
 .RegularTrackTimeline__container_activeTrack {
+    @extend .RegularTrackTimeline__container;
     background-color: $buttonColor;
-    line-height: 0;
-    overflow: hidden;
-    // position: relative;
 }
 
 .RegularTrackTimeline__innerContainer {

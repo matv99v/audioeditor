@@ -2,6 +2,7 @@
 
 .RegularTrackControls_container {
     border-left: 1px solid $appBlackBackground;
+    background-color: $timeLineColor;
 
     & button {
         text-shadow: none;

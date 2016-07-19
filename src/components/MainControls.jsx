@@ -32,7 +32,7 @@ export default class MainControls extends React.Component {
                         </ButtonGroup>
 
                         <ButtonGroup bsSize='large'>
-                            <Button><Glyphicon glyph='plus' /></Button>
+                            <Button><Glyphicon glyph='facetime-video' /></Button>
                         </ButtonGroup>
                     </ButtonGroup>
                 </Row>

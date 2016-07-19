@@ -7,10 +7,9 @@ import {Grid}   from 'react-bootstrap/lib';
 import {Col}   from 'react-bootstrap/lib';
 import {Row}   from 'react-bootstrap/lib';
 
-
-import Slider      from './TrackControlsShared/Slider.jsx';
-import VolumeMeter from './TrackControlsShared/VolumeMeter.jsx';
-import TrackNumber from './TrackControlsShared/TrackNumber.jsx';
+import Slider      from '../sharedComponents/Slider.jsx';
+import VolumeMeter from '../sharedComponents/VolumeMeter.jsx';
+import TrackNumber from '../sharedComponents/TrackNumber.jsx';
 
 import './RegularTrackControls.scss';
 

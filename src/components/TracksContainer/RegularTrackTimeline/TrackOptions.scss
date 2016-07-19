@@ -5,71 +5,73 @@
     position: relative;
     overflow: hidden;
     font-size: 35px;
-    // line-height: 100px;
     & > * {
         position: absolute;
     }
 }
 
+@mixin transition($targetOne, $targetTwo:'yee') {
+    transition: $targetOne 1s ease-out, #{$targetTwo} 1s ease-out;
+}
 
 
-.TrackOptions__moreOptions {
-    // color: $timeLineColor;
+// more omptions
+.TrackOptions__moreOptions_inactive {
+    @include transition(transform, right);
     right: calc(50% - 17.5px);
-    transition: transform 0.5s ease-out, right 0.5s ease-out;
-
     &:hover {
         color: $fontColor;
-        right: 5px;
         cursor: pointer;
-        transform: rotate(270deg);
     }
 
 }
+.TrackOptions__moreOptions_active {
+    @extend .TrackOptions__moreOptions_inactive;
+    right: 5px;
+    transform: rotate(270deg);
+}
 
-.TrackOptions__prevMarkerSelect {
-    // color: $timeLineColor;
+
+// prev marker
+.TrackOptions__prevMarkerSelect_active {
+    @include transition(top);
     padding: 0 20px;
-    left: 0;
-    transition: left 0.5s ease-out;
-
-    &:hover {
-        color: $fontColor;
-        cursor: pointer;
-    }
-}
-
-.TrackOptions__nextMarkerSelect {
-    // color: $timeLineColor;
-    right: 0;
-    padding: 0 20px;
-    transition: right 0.5s ease-out;
-
-    &:hover {
-        color: $fontColor;
-        cursor: pointer;
-    }
-}
-
-
-.TrackOptions__moreOptions:hover ~ .TrackOptions__hiddenControlsCont {
     top: 0;
+    &:hover {
+        color: $fontColor;
+        cursor: pointer;
+    }
+}
+.TrackOptions__prevMarkerSelect_inactive {
+    @extend .TrackOptions__prevMarkerSelect_active;
+    top: -100px;
 }
 
-.TrackOptions__moreOptions:hover ~ .TrackOptions__nextMarkerSelect {
-    right: -100px;
-}
 
-.TrackOptions__moreOptions:hover ~ .TrackOptions__prevMarkerSelect {
-    left: -100px;
-}
-
-.TrackOptions__hiddenControlsCont {
-    // position: absolute;
-    top: 200%;
-    left: 0;
+// next market
+.TrackOptions__nextMarkerSelect_active {
+    @include transition(top);
+    top: 0;
     right: 0;
-    margin: 0 auto;
-    transition: top 0.5s ease-out;
+    padding: 0 20px;
+    &:hover {
+        color: $fontColor;
+        cursor: pointer;
+    }
+}
+.TrackOptions__nextMarkerSelect_inactive {
+    @extend .TrackOptions__nextMarkerSelect_active;
+    top: -100px;
+}
 
+
+// hidden controls
+.TrackOptions__hiddenControlsCont_inactive {
+    @include transition(left);
+    left: -200%;
+    right: 0;
+}
+.TrackOptions__hiddenControlsCont_active {
+    @extend .TrackOptions__hiddenControlsCont_inactive;
+    left: 0;
 }

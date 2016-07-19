@@ -34,7 +34,9 @@ export default class RegularTrackTimeline extends React.Component {
 
                 {
                     this.props.isActive
-                        ? <TrackOptions height={62} id={this.props.id}/>
+                        ? <TrackOptions height           = {this.props.trackHeight}
+                                        showExtendedOpts = {this.props.showExtendedOpts}
+                                        id               = {this.props.id} />
                         : null
                 }
 

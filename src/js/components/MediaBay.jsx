@@ -11,13 +11,11 @@ import SvgWaveForm from './sharedComponents/SvgWaveForm.jsx';
 import SearchField from './MediaBay/SearchField.jsx';
 import SearchResultTable from './MediaBay/SearchResultTable.jsx';
 
-
+import {BAR_WIDTH, TRACK_HEIGHT} from '../constants.js';
 
 export default class MediaBay extends React.Component {
 
     render() {
-        const data = this.props.stateData;
-
         return (
             <div className='MediaBay__container'>
                 <Grid fluid>
@@ -27,14 +25,14 @@ export default class MediaBay extends React.Component {
                     </Row>
 
                     <Row className='no-gutter'>
-                        <SearchResultTable audioFiles={data.audioFiles}/>
+                        <SearchResultTable audioFiles={this.props.audioFiles}/>
                     </Row>
 
                     <Row className='no-gutter'>
                         <Col smHidden>
-                            <SvgWaveForm barWidth    = {data.barWidth}
-                                         trackHeight = {data.trackHeight}
-                                         peaksRaw    = {data.peaksRaw} />
+                            <SvgWaveForm barWidth    = {BAR_WIDTH}
+                                         trackHeight = {TRACK_HEIGHT}
+                                         peaksRaw    = {this.props.peaksRaw} />
                         </Col>
                     </Row>
 

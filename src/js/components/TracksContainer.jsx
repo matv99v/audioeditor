@@ -11,54 +11,51 @@ import {Grid}  from 'react-bootstrap/lib';
 import {Row}   from 'react-bootstrap/lib';
 import {Col}   from 'react-bootstrap/lib';
 
+import {TRACK_HEIGHT, BAR_WIDTH, MARKER_WIDTH} from '../constants.js';
+
+
 import './TracksContainer.scss';
 
 
 export default class TracksContainer extends React.Component {
 
     render() {
-        const data = this.props.stateData;
         return (
             <Grid fluid className='TracksContainer'>
 
                 <Row className='TracksContainer__singleTrackCont no-gutter'>
                     <Col xsHidden sm={3} md={3}>
-                        <OriginalTrackControls trackHeight = {data.trackHeight}
-                        />
+                        <OriginalTrackControls />
                     </Col>
 
                     <Col xs={12} sm={9} md={9}>
-                        <SvgWaveForm
-                            barWidth    = {data.barWidth}
-                            trackHeight = {data.trackHeight}
-                            peaksRaw    = {data.peaksRaw} />
+                        <SvgWaveForm peaksRaw = {this.props.peaksRaw} />
                     </Col>
                 </Row>
 
                 {
-                    data.tracks.map( (el, i) => <Row className='TracksContainer__singleTrackCont no-gutter'
-                                                     key={i} >
+                    this.props.tracks.map( (el, i) => <Row className='TracksContainer__singleTrackCont no-gutter'
+                                                            key={i} >
 
-                                                    <Col xsHidden sm={3} md={3}>
-                                                        <RegularTrackControls
-                                                            id   = {el.id}
-                                                            trackHeight = {data.trackHeight} />
-                                                    </Col>
+                                                           <Col xsHidden sm={3} md={3}>
+                                                               <RegularTrackControls
+                                                                   id   = {el.id}
+                                                                   trackHeight = {TRACK_HEIGHT} />
+                                                           </Col>
 
-                                                    <Col xs={12} sm={9} md={9} >
-                                                        <div style={{position: 'relative'}}>
-                                                            <RegularTrackTimeline
-                                                                isActive         = {data.activeTrackId === el.id}
-                                                                trackData        = {el}
-                                                                markerWidth      = {data.markerWidth}
-                                                                showExtendedOpts = {el.showExtendedOpts}
-                                                                id   = {el.id}
+                                                           <Col xs={12} sm={9} md={9} >
+                                                               <div style={{position: 'relative'}}>
+                                                                   <RegularTrackTimeline
+                                                                       isActive  = {this.props.activeTrackId === el.id}
+                                                                       id               = {el.id}
+                                                                       trackData        = {el}
+                                                                       markerWidth      = {MARKER_WIDTH}
+                                                                       showExtendedOpts = {el.showExtendedOpts}
+                                                                       trackHeight      = {TRACK_HEIGHT} />
+                                                               </div>
+                                                           </Col>
 
-                                                                trackHeight      = {data.trackHeight} />
-                                                        </div>
-                                                    </Col>
-
-                                                </Row>
+                                                       </Row>
                     )
                 }
             </Grid>

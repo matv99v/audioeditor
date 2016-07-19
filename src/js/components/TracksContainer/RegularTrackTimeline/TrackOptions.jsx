@@ -8,6 +8,9 @@ import RegularTrackControls from '../RegularTrackControls.jsx';
 
 import './TrackOptions.scss';
 
+import {TRACK_HEIGHT} from '../../../constants.js';
+
+
 export default class TrackOptions extends React.Component {
 
     render() {
@@ -15,8 +18,8 @@ export default class TrackOptions extends React.Component {
                 <Grid fluid>
                     <Row className='TrackOptions__container no-gutter'
                          style={{
-                             height    : this.props.height + 'px',
-                             lineHeight: this.props.height + 'px'
+                             height    : TRACK_HEIGHT + 'px',
+                             lineHeight: TRACK_HEIGHT + 'px'
                          }}>
 
                          <Col smHidden mdHidden lgHidden
@@ -46,9 +49,7 @@ export default class TrackOptions extends React.Component {
                                                no-gutter`}
                          >
 
-                            <RegularTrackControls
-                                trackHeight = {this.props.height}
-                                id          = {this.props.id}/>
+                            <RegularTrackControls id = {this.props.id}/>
                         </Col>
                     </Row>
                 </Grid>

@@ -29,7 +29,7 @@ export default class OriginalTrackControls extends React.Component {
                     <Row className='no-gutter' >
 
                         <Col xs={1} >
-                            <TrackNumber trackHeight={this.props.trackHeight} />
+                            <TrackNumber  />
                         </Col>
 
                         <Col xs={10} >
@@ -53,7 +53,7 @@ export default class OriginalTrackControls extends React.Component {
                         </Col>
 
                         <Col xs={1} >
-                            <VolumeMeter trackHeight={this.props.trackHeight}/>
+                            <VolumeMeter />
                         </Col>
 
                     </Row>

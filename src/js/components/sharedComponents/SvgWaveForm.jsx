@@ -6,13 +6,15 @@ import {Grid}   from 'react-bootstrap/lib';
 import getColorById from '../../helpers/getColorById.js';
 import './SvgWaveForm.scss';
 
+import {TRACK_HEIGHT, BAR_WIDTH} from '../../constants.js';
+
 import arrayToDescreteExtremums from '../../helpers/arrayToDescreteExtremums';
 
 export default class SvgWaveForm extends React.Component {
     render() {
         const width    = this.refs.SvgWaveForm ? this.refs.SvgWaveForm.clientWidth : 0;
-        const height   = this.props.trackHeight;
-        const barWidth = this.props.barWidth;
+        const height   = TRACK_HEIGHT;
+        const barWidth = BAR_WIDTH;
         const peaksRaw = this.props.peaksRaw;
 
         const kIndex   = (peaksRaw.length / (width / (barWidth + 2))) >> 0; // eslint-disable-line

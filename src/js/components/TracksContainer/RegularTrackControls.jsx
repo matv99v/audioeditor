@@ -29,7 +29,7 @@ export default class RegularTrackControls extends React.Component {
                     <Row className='no-gutter' >
 
                         <Col xs={1} >
-                            <TrackNumber id={this.props.id} trackHeight={this.props.trackHeight} />
+                            <TrackNumber id={this.props.id} />
                         </Col>
 
                         <Col xs={10} >
@@ -60,7 +60,7 @@ export default class RegularTrackControls extends React.Component {
                         </Col>
 
                         <Col xs={1} >
-                            <VolumeMeter trackHeight={this.props.trackHeight}/>
+                            <VolumeMeter />
                         </Col>
 
                     </Row>

@@ -3,6 +3,7 @@ import './TrackMarker.scss';
 
 import getColorById from '../../../helpers/getColorById.js';
 
+import {TRACK_HEIGHT, MARKER_WIDTH} from '../../../constants.js';
 
 
 export default class TrackMarker extends React.Component {
@@ -11,9 +12,9 @@ export default class TrackMarker extends React.Component {
             <div className='TrackMarker__container'
                  style={{
                      left            : this.props.position + '%',
-                     height          : this.props.markerHeight,
+                     height          : TRACK_HEIGHT,
                      border          : 0,
-                     borderLeftWidth : this.props.markerWidth,
+                     borderLeftWidth : MARKER_WIDTH,
                      borderStyle     : 'solid',
                      borderColor     : getColorById(this.props.id)
                  }}>

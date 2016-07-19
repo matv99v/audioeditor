@@ -24,6 +24,9 @@
     "eslint-loader": "^1.4.0",
     "eslint-plugin-react": "^5.2.2",
     "node-sass": "^3.8.0",
+    "react-redux": "^4.4.5",
+    "redux": "^3.5.2",
+    "redux-logger": "^2.6.1",
     "sass-loader": "^4.0.0",
     "webpack": "^1.13.1",
     "webpack-dev-server": "^1.14.1"

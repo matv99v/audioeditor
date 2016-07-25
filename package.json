@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "webpack": "webpack --watch -d",
-    "dev": "./node_modules/.bin/webpack-dev-server --content-base public --hot --host 0.0.0.0 --port 8080"
+    "dev": "./node_modules/.bin/webpack-dev-server --content-base public --hot --inline --host 0.0.0.0 --port 8080"
   },
   "author": "",
   "license": "ISC",
@@ -32,6 +32,7 @@
     "webpack-dev-server": "^1.14.1"
   },
   "dependencies": {
+    "lodash.debounce": "^4.0.6",
     "react": "^15.1.0",
     "react-bootstrap": "^0.29.5",
     "react-dom": "^15.1.0"

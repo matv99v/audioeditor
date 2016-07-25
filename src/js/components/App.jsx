@@ -38,12 +38,14 @@ export default class App extends React.Component {
         return (
             <Grid fluid>
                 <Row className='no-gutter'>
-                    <MainControls />
+                    <MainControls dispatch = {this.props.dispatch} />
                 </Row>
 
                 <Row className='no-gutter' >
                     <Col xs={12} sm={6} md={6} lg={6} >
-                        <Video timecode={this.props.currentTC} />
+                        <Video cursorTC  = {this.props.cursorTC}
+                               isPlaying = {this.props.isPlaying}
+                               dispatch  = {this.props.dispatch}/>
                     </Col>
 
                     <Col xsHidden sm={6} md={6} lg={6}>
@@ -53,7 +55,9 @@ export default class App extends React.Component {
                 </Row>
 
                 <Row className='no-gutter' >
-                    <Ruler currentTC={this.props.currentTC} />
+                    <Ruler cursorTC    = {this.props.cursorTC}
+                           dispatch    = {this.props.dispatch}
+                           tracksAmount = {this.props.tracks.length + 1} />
                 </Row>
 
                 <Row className='no-gutter' >
@@ -61,10 +65,11 @@ export default class App extends React.Component {
                 </Row>
 
                 <Row className='no-gutter' >
-                    <AddNewTrackBtn />
+                    <AddNewTrackBtn dispatch={this.props.dispatch} />
                 </Row>
 
                 {/*<Row><$$$test stateData={this.state} /></Row>*/}
+
 
             </Grid>
         );

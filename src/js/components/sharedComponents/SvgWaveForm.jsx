@@ -6,7 +6,7 @@ import {Grid}   from 'react-bootstrap/lib';
 import getColorById from '../../helpers/getColorById.js';
 import './SvgWaveForm.scss';
 
-import {TRACK_HEIGHT, BAR_WIDTH} from '../../constants.js';
+import {TRACK_HEIGHT, BAR_WIDTH, MARKER_WIDTH} from '../../constants.js';
 
 import arrayToDescreteExtremums from '../../helpers/arrayToDescreteExtremums';
 
@@ -39,7 +39,10 @@ export default class SvgWaveForm extends React.Component {
         }
 
         return (
-                    <div className='SvgWaveForm__container' ref='SvgWaveForm'>
+                    <div className = 'SvgWaveForm__container'
+                         ref       = 'SvgWaveForm'
+                         style     = {{ width: `calc(100% - ${MARKER_WIDTH}px)` }} >
+
                         <svg height              = {height}
                              width               = '100%'
                              viewBox             = {`0 0 ${width} ${height}`}

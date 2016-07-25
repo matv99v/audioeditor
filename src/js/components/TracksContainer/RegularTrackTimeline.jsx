@@ -10,33 +10,42 @@ import TrackMarker  from './RegularTrackTimeline/TrackMarker.jsx';
 import TrackOptions from './RegularTrackTimeline/TrackOptions.jsx';
 
 import {TRACK_HEIGHT, MARKER_WIDTH} from '../../constants.js';
+import { selectNewActiveTrack } from '../../actions/tracksActions.js';
 
 
 
 export default class RegularTrackTimeline extends React.Component {
+    handleSelectActiveTrack = (e) => {
+        e.stopPropagation();
+        this.props.dispatch( selectNewActiveTrack(this.props.trackData.id) );
+    };
+
     render() {
         return (
-            <div className = {this.props.isActive ? 'RegularTrackTimeline__container_activeTrack' : 'RegularTrackTimeline__container'} // eslint-disable-line
+            <div className = {this.props.trackData.isActive ? 'RegularTrackTimeline__container_active' : 'RegularTrackTimeline__container_inactive'} // eslint-disable-line
+                 onClick   = {this.handleSelectActiveTrack}
                  style     = {{ height: TRACK_HEIGHT }} >
 
-                {
-                    this.props.trackData.markers.map((el, i) => {
-                        return (
-                            <div className = 'RegularTrackTimeline__innerContainer'
-                                 key       = {i}
-                                 style     = {{ width: `calc(100% - ${MARKER_WIDTH}px)` }} >
+                 <div className = 'RegularTrackTimeline__innerContainer'
+                      style     = {{ width: `calc(100% - ${MARKER_WIDTH}px)` }} >
+                    {
+                        this.props.trackData.markers.map((el, i) => {
+                            return (
+                                    <TrackMarker position = {el}
+                                                 key      = {i}
+                                                 id       = {this.props.trackData.id} />
+                            );
+                        })
+                    }
+                </div>
 
-                                <TrackMarker position     = {el}
-                                             id           = {this.props.id} />
-                            </div>
-                        );
-                    })
-                }
-
                 {
-                    this.props.isActive
-                        ? <TrackOptions showExtendedOpts = {this.props.showExtendedOpts}
-                                        id               = {this.props.id} />
+                    this.props.trackData.isActive
+                        ? <TrackOptions showExtendedOpts = {this.props.trackData.showExtendedOpts}
+                                        dispatch         = {this.props.dispatch}
+                                        trackData        = {this.props.trackData}
+                                        cursorTC         = {this.props.cursorTC}
+                                        id               = {this.props.trackData.id} />
                         : null
                 }
 

@@ -11,16 +11,37 @@ module.exports = {
   entry: ["webpack/hot/dev-server", "./js/main.js"],
   module: {
     loaders: [
-      {
-        test: /\.jsx?$/,
-        exclude: /node_modules/,
-        loader: 'babel-loader',
-    },
-    {
-        test: /\.scss?$/,
-        exclude: /node_modules/,
-        loader: 'style-loader!css-loader!autoprefixer-loader!sass-loader'
-    }
+        {
+            test: /\.jsx?$/,
+            exclude: /node_modules/,
+            loader: 'babel-loader',
+        },
+        {
+            test: /\.scss?$/,
+            // exclude: /node_modules/,
+            loader: 'style-loader!css-loader!autoprefixer-loader!sass-loader'
+        },
+        {
+            test: /\.(woff|woff2)$/,
+            // exclude: /node_modules/,
+            loader: "url-loader?limit=10000&mimetype=application/font-woff"
+        },
+        {
+            test: /\.ttf$/,
+            // exclude: /node_modules/,
+            loader: "file-loader"
+
+        },
+        {
+            test: /\.eot$/,
+            // exclude: /node_modules/,
+            loader: "file-loader"
+        },
+        {
+            test: /\.svg$/,
+            // exclude: /node_modules/,
+            loader: "file-loader"
+        }
     ]
   },
   output: {

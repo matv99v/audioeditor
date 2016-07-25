@@ -9,22 +9,44 @@ import Glyphicon   from 'react-bootstrap/lib/Glyphicon';
 
 import Button from 'react-bootstrap/lib/Button';
 
+import { pressPlay } from '../actions/mainControlsActions.js';
+import { pressStop } from '../actions/mainControlsActions.js';
+
+
 import './MainControls.scss';
 
 
 export default class MainControls extends React.Component {
+    handlePlayBtn = () => {
+        console.log('play');
+        this.props.dispatch( pressPlay() );
+
+    };
+
+    handleStopBtn = () => {
+        console.log('stop');
+        this.props.dispatch( pressStop() );
+
+    }
 
     render() {
         return (
             <Grid fluid className='MainControls__container'>
                 <Row>
                     <ButtonGroup justified>
-                        <ButtonGroup bsSize='large' className='custom-button'>
-                            <Button><Glyphicon glyph='play' /></Button>
+
+                        <ButtonGroup bsSize='large' >
+                            <Button className='MainControls__btn_active'
+                                    onClick={this.handlePlayBtn}>
+                                <Glyphicon glyph='play'  />
+                            </Button>
                         </ButtonGroup>
 
-                        <ButtonGroup bsSize='large'>
-                            <Button><Glyphicon glyph='stop' /></Button>
+                        <ButtonGroup bsSize='large'
+                                     onClick={this.handleStopBtn}>
+                            <Button>
+                                <Glyphicon glyph='stop' />
+                            </Button>
                         </ButtonGroup>
 
                         <ButtonGroup bsSize='large'>
@@ -34,6 +56,7 @@ export default class MainControls extends React.Component {
                         <ButtonGroup bsSize='large'>
                             <Button><Glyphicon glyph='facetime-video' /></Button>
                         </ButtonGroup>
+
                     </ButtonGroup>
                 </Row>
             </Grid>

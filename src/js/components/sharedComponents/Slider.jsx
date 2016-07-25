@@ -2,12 +2,16 @@ import React from 'react';
 
 import './Slider.scss';
 
+import { changeVolume } from '../../actions/tracksActions.js';
+
 
 export default class Slider extends React.Component {
-    state = { sliderValue: this.props.value || 50 };
+    state = { sliderValue: this.props.volume };
 
     handleSliderChange = (e) => {
+        e.stopPropagation();
         this.setState({sliderValue: e.target.value});
+        // this.props.dispatch( changeVolume(this.props.id, e.target.value) );
     };
 
     render() {

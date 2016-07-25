@@ -12,8 +12,7 @@ export default class TrackNumber extends React.Component {
                      style     = {{
                          height         : TRACK_HEIGHT,
                          backgroundColor: getColorById(this.props.id)
-                     }}>
-                     {this.props.id}
+                     }} >
                 </div>
         );
     }

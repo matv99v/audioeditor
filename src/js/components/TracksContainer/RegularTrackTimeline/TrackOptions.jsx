@@ -9,9 +9,27 @@ import RegularTrackControls from '../RegularTrackControls.jsx';
 import './TrackOptions.scss';
 
 import {TRACK_HEIGHT} from '../../../constants.js';
+import { showHiddenOptions } from '../../../actions/tracksActions.js';
+import { selectPrevMarker } from '../../../actions/curosrActions.js';
+import { selectNextMarker } from '../../../actions/curosrActions.js';
+
 
 
 export default class TrackOptions extends React.Component {
+    handleShowHiddenControlsBtn = (e) => {
+        e.stopPropagation();
+        this.props.dispatch( showHiddenOptions(this.props.id) );
+    };
+
+    handlePrevMarkerBtn = (e) => {
+        e.stopPropagation();
+        this.props.dispatch( selectPrevMarker(this.props.cursorTC, this.props.trackData.markers) );
+    };
+
+    handleNextMarkerBtn = (e) => {
+        e.stopPropagation();
+        this.props.dispatch( selectNextMarker(this.props.cursorTC, this.props.trackData.markers) );
+    };
 
     render() {
         return (
@@ -23,7 +41,8 @@ export default class TrackOptions extends React.Component {
                          }}>
 
                          <Col smHidden mdHidden lgHidden
-                             className = {this.props.showExtendedOpts
+                              onClick   = {this.handleShowHiddenControlsBtn}
+                              className = {this.props.showExtendedOpts
                                             ? 'TrackOptions__moreOptions_active no-gutter'
                                             : 'TrackOptions__moreOptions_inactive no-gutter'} >
 
@@ -32,13 +51,17 @@ export default class TrackOptions extends React.Component {
 
                         <Col className = {this.props.showExtendedOpts
                                             ? 'TrackOptions__prevMarkerSelect_inactive'
-                                            : 'TrackOptions__prevMarkerSelect_active'} >
+                                            : 'TrackOptions__prevMarkerSelect_active'}
+                             onClick   = {this.handlePrevMarkerBtn} >
+
                             <Glyphicon glyph='menu-left' />
                         </Col>
 
                         <Col className = {this.props.showExtendedOpts
                                             ? 'TrackOptions__nextMarkerSelect_inactive'
-                                            : 'TrackOptions__nextMarkerSelect_active'} >
+                                            : 'TrackOptions__nextMarkerSelect_active'}
+                             onClick   = {this.handleNextMarkerBtn} >
+
                             <Glyphicon glyph='menu-right' />
                         </Col>
 
@@ -46,10 +69,13 @@ export default class TrackOptions extends React.Component {
                              className = {this.props.showExtendedOpts
                                             ? 'TrackOptions__hiddenControlsCont_active no-gutter'
                                             : `TrackOptions__hiddenControlsCont_inactive
-                                               no-gutter`}
-                         >
+                                               no-gutter`} >
 
-                            <RegularTrackControls id = {this.props.id}/>
+                            <RegularTrackControls id        = {this.props.id}
+                                                  trackData = {this.props.trackData}
+                                                  cursorTC  = {this.props.cursorTC}
+                                                  dispatch  = {this.props.dispatch} />
+
                         </Col>
                     </Row>
                 </Grid>

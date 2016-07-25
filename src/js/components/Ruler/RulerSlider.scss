@@ -1,0 +1,126 @@
+@import '../../../scss/variables.scss';
+
+.RulerSlider__container {
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: $rulerColor;
+    position: relative;
+    height: $sliderHeight;
+    & input {
+        position: absolute;
+    }
+}
+
+.RulerSlider__view {
+    // background-color: $buttonColor;
+    position: absolute;
+    height: 100%;
+    width: 75%;
+    // border-top: 1px solid $appBlackBackground;
+}
+
+.RulerSlider__volumeAmount {
+    color: $timeLineColor;
+    font-size: $sliderHeight;
+    font-family: monospace;
+    line-height: $sliderHeight;
+    position: absolute;
+    right: 1%;
+}
+
+.RulerSlider__generic {
+    &:hover {
+        cursor: pointer;
+    }
+
+    // chrome
+    &[type=range]{
+        -webkit-appearance: none;
+        background: transparent;
+    }
+
+    &[type=range]::-webkit-slider-runnable-track {
+        width: 100%;
+        height: $sliderHeight;
+    }
+
+    &[type=range]::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        height: $sliderHeight;
+        width: 30px;
+    }
+
+    &[type=range]:focus {
+        outline: none;
+    }
+
+    &[type=range]:focus::-webkit-slider-runnable-track {
+    }
+
+
+    // mozilla
+    &[type=range]::-moz-range-track {
+        width: 100%;
+        height: 50px;
+        background: transparent;
+    }
+
+    &[type=range]::-moz-range-thumb {
+        background: transparent;
+        border: none;
+    }
+
+    &[type=range]::-moz-focus-outer{
+        border: 0;
+        height: $sliderHeight;
+    }
+
+    &[type=range]:-moz-focusring{
+    }
+
+    &[type=range]:focus::-moz-range-track {
+    }
+}
+
+.RulerSlider__container_inner {
+    height: calc(#{$rulerPointerSize} + 10px);
+    line-height: 20px;
+    position: relative;
+    background-color: $rulerColor;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.RulerSlider__pointer {
+    right: calc(-2 * #{$rulerPointerSize});
+    // top: $rulerPointerSize;
+    bottom: 0;
+    width: 0;
+    height: 0;
+    border-left: $rulerPointerSize solid transparent;
+    border-right: $rulerPointerSize solid transparent;
+    border-top: calc(#{$rulerPointerSize} - 7px) solid $pointerColor;
+    box-sizing: content-box;
+    position: absolute;
+    transform: translateX(-50%);
+    z-index: 2;
+}
+
+.RulerSlider__line {
+    border-left: 2px solid $pointerColor;
+    display: inline-block;
+    transform: translate(-1px, -5px);
+}
+
+.RulerSlider__timeStamps {
+    border-left: 1px solid $buttonColorDarker;
+    font-size: smaller;
+    font-family: monospace;
+    bottom: 0;
+    color: $buttonColor;
+    position: absolute;
+    display: inline-block;
+    padding-left: 1px;
+}

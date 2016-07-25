@@ -11,7 +11,7 @@
 }
 
 @mixin transition($targetOne, $targetTwo:'yee') {
-    transition: $targetOne 1s ease-out, #{$targetTwo} 1s ease-out;
+    transition: $targetOne 0.5s ease-out, #{$targetTwo} 0.5s ease-out;
 }
 
 
@@ -44,7 +44,9 @@
 }
 .TrackOptions__prevMarkerSelect_inactive {
     @extend .TrackOptions__prevMarkerSelect_active;
-    top: -100px;
+    // @media (min-width:  768px) {
+        top: -100px;
+    // }
 }
 
 

@@ -28,25 +28,25 @@ const audioFilesInitState = [
         name: 'shoots',
         duration: 2,
         rating: 2
+    },
+    {
+        id: 6,
+        name: 'robots',
+        duration: 1,
+        rating: 3
+    },
+    {
+        id: 7,
+        name: 'wheels',
+        duration: 6,
+        rating: 4
+    },
+    {
+        id: 8,
+        name: 'squeezes',
+        duration: 4,
+        rating: 5
     }
-    // {
-    //     id: 6,
-    //     name: 'robots',
-    //     duration: 1,
-    //     rating: 3
-    // },
-    // {
-    //     id: 7,
-    //     name: 'wheels',
-    //     duration: 6,
-    //     rating: 4
-    // },
-    // {
-    //     id: 8,
-    //     name: 'squeezes',
-    //     duration: 4,
-    //     rating: 5
-    // }
 ];
 
 

@@ -1,13 +1,18 @@
 @import '../../../scss/variables.scss';
 
-.RegularTrackTimeline__container {
+.RegularTrackTimeline__container_inactive {
     background-color: $timeLineColor;
     line-height: 0;
     overflow: hidden;
+    &:hover {
+        cursor: pointer;
+        background-color: $timeLineColorLighter;
+    }
 }
 
-.RegularTrackTimeline__container_activeTrack {
-    @extend .RegularTrackTimeline__container;
+.RegularTrackTimeline__container_active {
+    line-height: 0;
+    overflow: hidden;
     background-color: $buttonColor;
 }
 

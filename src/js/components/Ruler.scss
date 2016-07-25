@@ -1,9 +1,15 @@
 @import '../../scss/variables.scss';
 
 .Ruler__container {
-    height: $rulerPointerSize;
+}
+
+.Ruler__container_inner {
+    height: calc(#{$rulerPointerSize} + 10px);
     position: relative;
     background-color: $rulerColor;
+    &:hover {
+        cursor: pointer;
+    }
 }
 
 .Ruler__pointer {
@@ -26,9 +32,9 @@
 }
 
 .Ruler__statusContainer {
-    font-size: 11px;
-    line-height: $TC-font-size;
-    height: $TC-font-size;
+    // font-size: 10px;
+    // line-height: $TC-font-size;
+    // height: $TC-font-size;
     font-family: monospace;
     color: $buttonColorDarker;
     overflow: hidden;

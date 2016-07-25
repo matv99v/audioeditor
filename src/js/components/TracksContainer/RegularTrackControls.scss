@@ -1,20 +1,22 @@
 @import '../../../scss/variables.scss';
 
-.RegularTrackControls_container {
-    border-left: 1px solid $appBlackBackground;
-    background-color: $timeLineColor;
+.RegularTrackControls__container {
+}
 
-    & button {
-        text-shadow: none;
-        background-color: $buttonColor;
-        border: 0 none;
-        color: $appBlackBackground;
-        border-radius: 0 !important;
-    }
-    & button:hover {
-        background-color: $buttonColorDarker;
-    }
-    & .btn-group:not(:last-of-type) {
-        border-right: 1px solid $appBlackBackground;
-    }
+
+.RegularTrackControls__removeMarkerIcon {
+    color: $redDarkColor;
+}
+
+.RegularTrackControls__addMarkerIcon {
+    color: $greenColor;
+}
+
+.RegularTrackControls__soloBtn {
+    background-color: $redColor !important;
+}
+
+
+.RegularTrackControls__muteBtn {
+    background-color: $muteButton !important;
 }

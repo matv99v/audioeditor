@@ -25,7 +25,11 @@ export default class TracksContainer extends React.Component {
 
                 <Row className='TracksContainer__singleTrackCont no-gutter'>
                     <Col xsHidden sm={3} md={3}>
-                        <OriginalTrackControls />
+                        <OriginalTrackControls dispatch  = {this.props.dispatch}
+                                               trackData = {this.props.tracks[0]}
+                                               id        = {this.props.tracks[0].id}
+                                               volume    = {this.props.tracks[0].volume}
+                                               />
                     </Col>
 
                     <Col xs={12} sm={9} md={9}>
@@ -34,29 +38,33 @@ export default class TracksContainer extends React.Component {
                 </Row>
 
                 {
-                    this.props.tracks.map( (el, i) => <Row className='TracksContainer__singleTrackCont no-gutter'
-                                                            key={i} >
+                    this.props.tracks.map( (el, i) => {
+                        return (
+                            <Row className='TracksContainer__singleTrackCont no-gutter'
+                                 key={i} >
 
-                                                           <Col xsHidden sm={3} md={3}>
-                                                               <RegularTrackControls
-                                                                   id   = {el.id}
-                                                                   trackHeight = {TRACK_HEIGHT} />
-                                                           </Col>
+                                <Col xsHidden sm={3} md={3}>
+                                    <RegularTrackControls id        = {el.id}
+                                                          trackData = {el}
+                                                          cursorTC  = {this.props.cursorTC}
+                                                          dispatch  = {this.props.dispatch}
+                                                          volume    = {el.volume} />
+                                </Col>
 
-                                                           <Col xs={12} sm={9} md={9} >
-                                                               <div style={{position: 'relative'}}>
-                                                                   <RegularTrackTimeline
-                                                                       isActive  = {this.props.activeTrackId === el.id}
-                                                                       id               = {el.id}
-                                                                       trackData        = {el}
-                                                                       markerWidth      = {MARKER_WIDTH}
-                                                                       showExtendedOpts = {el.showExtendedOpts}
-                                                                       trackHeight      = {TRACK_HEIGHT} />
-                                                               </div>
-                                                           </Col>
+                                <Col xs={12} sm={9} md={9} >
+                                    <div style={{position: 'relative'}}>
+                                        <RegularTrackTimeline
+                                            id        = {el.id}
+                                            trackData = {el}
+                                            cursorTC  = {this.props.cursorTC}
+                                            dispatch  = {this.props.dispatch}
+                                        />
+                                    </div>
+                                </Col>
 
-                                                       </Row>
-                    )
+                            </Row>
+                        );
+                    }).slice(1)
                 }
             </Grid>
         );

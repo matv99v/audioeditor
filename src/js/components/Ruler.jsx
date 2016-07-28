@@ -21,6 +21,7 @@ export default class Ruler extends React.Component {
                          <RulerSlider dispatch     = {this.props.dispatch}
                                       id           = {this.props.id}
                                       tracksAmount = {this.props.tracksAmount}
+                                      isPlaying    = {this.props.isPlaying}
                                       cursorTC     = {this.props.cursorTC} />
                     </Col>
 

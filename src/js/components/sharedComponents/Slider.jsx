@@ -11,7 +11,7 @@ export default class Slider extends React.Component {
     handleSliderChange = (e) => {
         e.stopPropagation();
         this.setState({sliderValue: e.target.value});
-        // this.props.dispatch( changeVolume(this.props.id, e.target.value) );
+        this.props.dispatch( changeVolume(this.props.id, e.target.value) );
     };
 
     render() {

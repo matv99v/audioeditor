@@ -20,3 +20,22 @@
 .RegularTrackControls__muteBtn {
     background-color: $muteButton !important;
 }
+
+.RegularTrackControls__buttonGroup {
+    outline: 1px solid $appBlackBackground;
+}
+
+.RegularTrackControls__volumeMeter {
+    outline: 1px solid $appBlackBackground;
+}
+
+.RegularTrackControls__head {
+    font-size: 11px;
+    font-family: monospace;
+    text-align: center;
+}
+
+
+.RegularTrackControls__trackName {
+    line-height: 20px;
+}

@@ -10,9 +10,10 @@ import { setNewTimeCode } from '../../actions/curosrActions.js';
 
 
 export default class RulerSlider extends React.Component {
+
     handleSliderChange = (e) => {
         e.stopPropagation();
-        this.props.dispatch( setNewTimeCode(e.target.value) ); // todo add debounce from lodash
+        this.props.dispatch( setNewTimeCode(e.target.value) );
     };
 
     rulerSegments = [...Array(20)].map((el, i, array) => {
@@ -31,7 +32,7 @@ export default class RulerSlider extends React.Component {
     });
 
     render() {
-        const pointerHeight = (this.props.tracksAmount - 1) * TRACK_HEIGHT + this.props.tracksAmount + 3;
+        const pointerHeight = this.props.tracksAmount * (TRACK_HEIGHT + 1) + 4;
 
         return (
             <div className='RulerSlider__container'

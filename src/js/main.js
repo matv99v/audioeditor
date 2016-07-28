@@ -8,10 +8,9 @@ import store from './store.js';
 import '../scss/main.scss';
 
 import { PATH_TO_VIDEO } from './constants.js';
-import getAudioSource from './helpers/getAudioSource.js';
-
 
 ReactDOM.render(
+
     <Provider store={store} >
         <App />
     </Provider>,
@@ -19,13 +18,45 @@ ReactDOM.render(
     document.getElementById('app')
 );
 
-getAudioSource(PATH_TO_VIDEO)
-    .then(source => {
-        source.addEventListener('onaudioprogress', () => {
-            console.log(source.duration);
-        });
-        if (context) console.log('eeeee');
-        source.start(5);
-        return source;
-    })
-    .then(source => source.start(15));
+
+const context = new window.AudioContext(); // создаем аудио контекст
+const sources = {};
+const buffers = [];
+
+
+function loadSoundFiles(urls) { // функция для подгрузки файла в буфер
+    urls.forEach(url => {
+        const xhr = new XMLHttpRequest();   // делаем XMLHttpRequest (AJAX) на сервер
+        xhr.open('GET', url, true);
+        xhr.responseType = 'arraybuffer'; // важно
+        xhr.onload = function() {
+            context.decodeAudioData(     // декодируем бинарный ответ
+                this.response,
+                function(decodedArrayBuffer) {
+                    buffers.push(decodedArrayBuffer);       // получаем декодированный буфер
+                },
+                function(e) {
+                    console.log('Error decoding file', e);
+                });
+        };
+        xhr.send();
+    });
+}
+
+
+function play(id) { // функция начала воспроизведения
+    sources[id] = context.createBufferSource(); // создаем источник
+    sources[id].buffer = buffers[id]; // подключаем буфер к источнику
+    sources[id].connect(context.destination);
+    sources[id].start(context.currentTime, 5); // воспроизводим (when, offset)
+    sources[id].onended = () => {
+        delete sources[id];
+    };
+    console.log(sources);
+}
+
+function stop(id) { // функция остановки воспроизведения
+    sources[id].stop(0);
+    delete sources[id];
+    console.log(sources);
+}

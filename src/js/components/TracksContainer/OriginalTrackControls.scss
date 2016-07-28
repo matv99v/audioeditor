@@ -1,4 +1,4 @@
-@import '../../../scss/variables.scss';
+ @import '../../../scss/variables.scss';
 
 .OriginalTrackControls__container {
 }
@@ -9,4 +9,19 @@
 
 .OriginalTrackControls__muteBtn {
     background-color: $muteButton !important;
+}
+
+.OriginalTrackControls__buttonGroup {
+    outline: 1px solid $appBlackBackground;
+}
+
+.OriginalTrackControls__volumeMeter {
+    outline: 1px solid $appBlackBackground;
+}
+
+.OriginalTrackControls__head {
+    text-align: center;
+    font-size: 11px;
+    font-family: monospace;
+    line-height: 20px;
 }

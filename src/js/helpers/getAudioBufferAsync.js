@@ -1,4 +1,4 @@
-export default function getAudioBufferPeaksAsync(url) {
+export default function getAudioBufferAsync(url) {
     return new Promise((resolve, reject) => {
 
         const xhr = new XMLHttpRequest();
@@ -6,12 +6,11 @@ export default function getAudioBufferPeaksAsync(url) {
         xhr.responseType = 'arraybuffer';
 
         xhr.onload = () => {
-            const context  = new window.AudioContext();
-            context.decodeAudioData(
+            ( new window.AudioContext() ).decodeAudioData(
                 xhr.response,
                 decodedArrayBuffer => {
-                    const peaksRaw = decodedArrayBuffer.getChannelData(0);
-                    resolve(peaksRaw);
+                    const audioBuffer = decodedArrayBuffer;
+                    resolve(audioBuffer);
                 },
                 err => {
                     reject(console.log('Error decoding file', err));

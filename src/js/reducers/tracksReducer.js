@@ -99,14 +99,7 @@ export default function tracksReducer(state = [origTrackInitState], action) {
             });
 
         case 'ADD_NEW_MARKER':
-            // return state.map(el => {
-            //     if (el.isActive && !el.markers.includes(action.payload)) {
-            //         el.markers = [...el.markers, action.payload];
-            //     }
-            //     return el;
-            // });
-
-            const newState = state.map(el => {
+            return state.map(el => {
                 if (el.id === action.payload.trackId && !el.markers.includes(action.payload.cursorTC)) {
                     el.markers = [...el.markers, action.payload.cursorTC];
                     el.isActive = true;
@@ -115,7 +108,6 @@ export default function tracksReducer(state = [origTrackInitState], action) {
                 }
                 return el;
             });
-            return newState;
 
         case 'REMOVE_MARKER':
             return state.map(el => {

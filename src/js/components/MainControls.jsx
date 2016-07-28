@@ -9,6 +9,10 @@ import Glyphicon   from 'react-bootstrap/lib/Glyphicon';
 
 import Button from 'react-bootstrap/lib/Button';
 
+import getFileNameFromPath from '../helpers/getFileNameFromPath.js';
+import AudioFactory from '../helpers/AudioFactory.js';
+
+
 import { pressPlay } from '../actions/mainControlsActions.js';
 import { pressStop } from '../actions/mainControlsActions.js';
 
@@ -17,17 +21,23 @@ import './MainControls.scss';
 
 
 export default class MainControls extends React.Component {
-    handlePlayBtn = () => {
-        console.log('play');
-        this.props.dispatch( pressPlay() );
+    audioFactory = new AudioFactory();
 
+    handlePlayBtn = () => {
+        this.props.dispatch( pressPlay() );
+        this.audioFactory.playAll();
     };
 
     handleStopBtn = () => {
-        console.log('stop');
         this.props.dispatch( pressStop() );
-
+        this.audioFactory.stopAll();
     }
+
+    componentDidMount = () => {
+        this.audioFactory.loadSoundFiles(
+            this.props.audioFiles.map(audio => audio.path)
+        );
+    };
 
     render() {
         return (

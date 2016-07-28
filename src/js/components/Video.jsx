@@ -8,32 +8,43 @@ import { setNewTimeCode } from '../actions/curosrActions.js';
 
 
 export default class Video extends React.Component {
-    componentWillReceiveProps = (nextProps) => {
-        if (nextProps.isPlaying) this.refs.videoElement.play();
-        else this.refs.videoElement.pause();
+    animationFrameCallerId = null;
+
+    handleTCchange = () => {
+        this.props.dispatch( setNewTimeCode(
+            (this.refs.videoElement.currentTime / this.refs.videoElement.duration) * 100
+        ) );
+        this.animationFrameCallerId = requestAnimationFrame(this.handleTCchange);
     };
 
-    curTime = 0;
+    componentWillReceiveProps = (nextProps) => {
+        // console.log(this.props.isPlaying, nextProps.isPlaying);
+        if (!this.props.isPlaying && nextProps.isPlaying) { // false true
+            console.log('playing');
+            this.refs.videoElement.play();
+            this.animationFrameCallerId = requestAnimationFrame(this.handleTCchange);
 
-    componentDidUpdate = () => {
-        // console.log(this.props.cursorTC);
-        this.curTime = (this.props.cursorTC / 100) * this.refs.videoElement.duration;
-        this.refs.videoElement.currentTime = this.curTime;
-        this.refs.videoElement.ontimeupdate = () => {
-            this.props.dispatch( setNewTimeCode(
-                (this.refs.videoElement.currentTime / this.refs.videoElement.duration) * 100 )
-            );
-            // console.log(this.refs.videoElement.currentTime);
-        };
+        } else if (this.props.isPlaying && !nextProps.isPlaying) { // true false
+            console.log('stopping');
+            this.refs.videoElement.pause();
+            cancelAnimationFrame(this.animationFrameCallerId);
+        } else if (!this.props.isPlaying && !nextProps.isPlaying) { // false false
+            console.log('set TC');
+            const curTime = (nextProps.cursorTC / 100) * this.refs.videoElement.duration;
+            this.refs.videoElement.currentTime = curTime;
+        }
     };
 
     render() {
-
         return (
             <div className='Video__container'>
-                <div className='Video__timecode'>{this.curTime.toFixed(2)}</div>
+                <div className='Video__timecode'>{this.props.cursorTC}</div>
 
-                <video width='100%' height='auto' className='Video__videoElement' ref='videoElement' >
+                <video width='100%'
+                       height='auto'
+                       muted
+                       className='Video__videoElement'
+                       ref='videoElement' >
                     <source src={PATH_TO_VIDEO} type='video/mp4'/>
                 </video>
             </div>

@@ -1,58 +1,62 @@
 import React from 'react';
 
-import Grid  from 'react-bootstrap/lib/Grid';
-import Row   from 'react-bootstrap/lib/Row';
-import Col   from 'react-bootstrap/lib/Col';
+// import Grid  from 'react-bootstrap/lib/Grid';
+// import Row   from 'react-bootstrap/lib/Row';
+// import Col   from 'react-bootstrap/lib/Col';
 
-
-// import TestComponent from './Slider/Slider.jsx';           // arguments: 'initValue', 'height'
-// import TestComponent from './Tracks/TrackOptions.jsx';  // arguments: 'height'
-// import TestComponent from './TrackOptions/TrackOptions.jsx';  // arguments: 'height'
-import TestComponent from './TracksContainer/SvgWaveForm.jsx';
-
+import getFileNameFromPath from '../helpers/getFileNameFromPath.js';
+import AudioFactory from '../helpers/AudioFactory.js';
 
 export default class $$$test extends React.Component {
+    state = {
+        audios : [
+            '../media/stick.wav',
+            '../media/kick.wav',
+            '../media/snare.wav',
+            '../media/snowboard.mp4',
+            '../media/RATM-1.mp3',
+            '../media/RATM-2.mp3'
+        ]
+    };
+
+    audioFactory = new AudioFactory();
+
+    componentDidMount = () => {
+        this.audioFactory.loadSoundFiles( this.state.audios );
+    };
 
     render() {
-        const styleObject = { border: '1px solid lime' };
-        const barWidth    = this.props.stateData.barWidth;
-        const trackHeight = this.props.stateData.trackHeight;
-        const windowWidth = this.props.stateData.windowWidth;
-        const peaksRaw    = this.props.stateData.peaksRaw;
-
         return (
-            <div>
-                <Grid fluid>
+            <div style={{color: 'red'}}>
+                <div> play
+                    {
+                        this.state.audios.map((el, i) => {
+                            return <button key={i}
+                                           onClick={this.audioFactory.play.bind( this.audioFactory,
+                                                                                 getFileNameFromPath(el),
+                                                                                 void 1,
+                                                                                 void 1) }>
+                                { getFileNameFromPath(el) }
+                            </button>;
+                        })
+                    }
+                </div>
 
-                    <Row className='no-gutter'>
-                        <Col style={styleObject}>
-                            <TestComponent
-                                barWidth    = {barWidth}
-                                trackHeight = {trackHeight}
-                                windowWidth = {windowWidth}
-                                peaksRaw    = {peaksRaw} />
-                        </Col>
-                    </Row>
-
-                    <Row className='no-gutter' >
-                        <Col xs={9} sm={9} md={9} style={styleObject}>
-                            <TestComponent
-                                barWidth    = {barWidth}
-                                trackHeight = {trackHeight}
-                                windowWidth = {windowWidth}
-                                peaksRaw    = {peaksRaw} />
-                        </Col>
-
-                        <Col xs={3} sm={3} md={3} style={styleObject}>
-                            <TestComponent
-                                barWidth    = {barWidth}
-                                trackHeight = {trackHeight}
-                                windowWidth = {windowWidth}
-                                peaksRaw    = {peaksRaw} />
-                        </Col>
-                    </Row>
-
-                </Grid>
+                <div> stop
+                    {
+                        this.state.audios.map((el, i) => {
+                            return <button key={i}
+                                           onClick={this.audioFactory.stop.bind( this.audioFactory,
+                                                                                 getFileNameFromPath(el)) }>
+                                { getFileNameFromPath(el) }
+                            </button>;
+                        })
+                    }
+                </div>
+                <div>
+                    <button onClick={this.audioFactory.playAll.bind(this.audioFactory)}>play all</button>
+                    <button onClick={this.audioFactory.stopAll.bind(this.audioFactory)}>stop all</button>
+                </div>
             </div>
         );
     }

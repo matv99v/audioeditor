@@ -14,6 +14,12 @@ import TrackNumber from '../sharedComponents/TrackNumber.jsx';
 import { soloTrack } from '../../actions/tracksActions.js';
 import { muteTrack } from '../../actions/tracksActions.js';
 
+import {TRACK_HEAD} from '../../constants.js';
+
+import getColorById from '../../helpers/getColorById.js';
+
+
+
 
 import './OriginalTrackControls.scss';
 
@@ -33,12 +39,19 @@ export default class OriginalTrackControls extends React.Component {
 
     handleSoloClick = (e) => {
         this.props.dispatch( soloTrack(this.props.id) );
-
     };
 
     render() {
         return (
                 <Grid fluid className='OriginalTrackControls__container' >
+
+                    <Row className='OriginalTrackControls__head no-gutter'
+                         style={{height: TRACK_HEAD,
+                                 backgroundColor: getColorById()
+                         }}>
+                        Original audio
+                    </Row>
+
                     <Row className='no-gutter' >
 
                         <Col xs={1} >
@@ -47,7 +60,7 @@ export default class OriginalTrackControls extends React.Component {
 
                         <Col xs={10} >
                             <Grid fluid>
-                                <Row className='no-gutter'>
+                                <Row className='no-gutter' className='OriginalTrackControls__buttonGroup'>
                                     <ButtonGroup justified>
 
                                         <ButtonGroup >
@@ -82,7 +95,7 @@ export default class OriginalTrackControls extends React.Component {
                             </Grid>
                         </Col>
 
-                        <Col xs={1} >
+                        <Col xs={1} className='OriginalTrackControls__volumeMeter'>
                             <VolumeMeter />
                         </Col>
 

@@ -11,6 +11,10 @@ import {TRACK_HEIGHT, BAR_WIDTH, MARKER_WIDTH} from '../../constants.js';
 import arrayToDescreteExtremums from '../../helpers/arrayToDescreteExtremums';
 
 export default class SvgWaveForm extends React.Component {
+    shouldComponentUpdate(nextProps) {
+        return nextProps.peaksRaw.length !== this.props.peaksRaw.length;
+    }
+
     render() {
         const width    = this.refs.SvgWaveForm ? this.refs.SvgWaveForm.clientWidth : 0;
         const height   = TRACK_HEIGHT;

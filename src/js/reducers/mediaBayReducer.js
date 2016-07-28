@@ -1,51 +1,45 @@
 const audioFilesInitState = [
     {
         id: 0,
-        name: 'steps',
+        path: '../media/stick.wav',
+        name: 'stick',
         duration: 7,
         rating: 5
     },
     {
         id: 1,
-        name: 'screams',
+        name: 'kick',
         duration: 3,
-        rating: 3
+        rating: 3,
+        path: '../media/kick.wav'
     },
     {
         id: 2,
-        name: 'falls',
+        name: 'snare',
         duration: 4,
-        rating: 1
+        rating: 1,
+        path: '../media/snare.wav'
     },
     {
         id: 3,
-        name: 'heels',
+        name: 'snowboard',
         duration: 6,
-        rating: 4
+        rating: 4,
+        path: '../media/snowboard.mp4'
     },
     {
         id: 4,
-        name: 'shoots',
+        name: 'RATM-1',
         duration: 2,
-        rating: 2
+        rating: 2,
+        path: '../media/RATM-1.mp3'
     },
     {
         id: 6,
-        name: 'robots',
+        name: 'RATM-2',
         duration: 1,
-        rating: 3
-    },
-    {
-        id: 7,
-        name: 'wheels',
-        duration: 6,
-        rating: 4
-    },
-    {
-        id: 8,
-        name: 'squeezes',
-        duration: 4,
-        rating: 5
+        rating: 3,
+        path: '../media/RATM-2.mp3'
     }
 ];
 

@@ -17,6 +17,12 @@ import { removeMarker } from '../../actions/tracksActions.js';
 import { soloTrack } from '../../actions/tracksActions.js';
 import { muteTrack } from '../../actions/tracksActions.js';
 
+import {TRACK_HEAD} from '../../constants.js';
+
+import getColorById from '../../helpers/getColorById.js';
+
+
+
 
 import './RegularTrackControls.scss';
 
@@ -50,16 +56,27 @@ export default class RegularTrackControls extends React.Component {
         const removeInsertMarkerFlag = this.props.trackData.markers.some(el => el === this.props.cursorTC);
         return (
                 <Grid fluid className='RegularTrackControls__container'>
+
+                    <Row className='RegularTrackControls__head no-gutter'
+                         style={{height: TRACK_HEAD,
+                                 backgroundColor: getColorById(this.props.id)
+                         }}>
+                         <span className='RegularTrackControls__trackName'>Stick</span>
+                         {/* <span className='RegularTrackControls__newAudioBtn'>
+                            <button><Glyphicon glyph='edit'/></button>
+                        </span> */}
+                    </Row>
+
                     <Row className='no-gutter' >
 
-                        <Col xs={1} >
+                        <Col xs={1}>
                             <TrackNumber id={this.props.id} />
                         </Col>
 
                         <Col xs={10} >
                             <Grid fluid>
 
-                                <Row className='no-gutter'>
+                                <Row className='no-gutter' className='RegularTrackControls__buttonGroup'>
                                     <ButtonGroup justified>
 
                                         <ButtonGroup >
@@ -113,7 +130,7 @@ export default class RegularTrackControls extends React.Component {
                             </Grid>
                         </Col>
 
-                        <Col xs={1} >
+                        <Col xs={1} className='RegularTrackControls__volumeMeter'>
                             <VolumeMeter />
                         </Col>
 

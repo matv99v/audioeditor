@@ -12,11 +12,11 @@ import Ruler           from './Ruler.jsx';
 import MediaBay        from './MediaBay.jsx';
 import AddNewTrackBtn     from './AddNewTrackBtn.jsx';
 
-// import $$$test         from './$$$test.jsx';
+import $$$test         from './$$$test.jsx';
 import {PATH_TO_VIDEO} from '../constants.js';
 
 
-import getAudioBufferPeaksAsync from '../helpers/getAudioBufferPeaksAsync.js';
+import getAudioBufferAsync from '../helpers/getAudioBufferAsync.js';
 import './App.scss';
 
 @connect(store => {
@@ -28,17 +28,18 @@ export default class App extends React.Component {
     state = { peaksRaw: [] };
 
     componentDidMount() {
-        getAudioBufferPeaksAsync(PATH_TO_VIDEO)
-            .then( peaksRaw => {
-                this.setState( {peaksRaw} );
+        getAudioBufferAsync(PATH_TO_VIDEO)
+            .then( audioBuffer => {
+                this.setState( {peaksRaw: audioBuffer.getChannelData(0)} );
             });
     }
 
     render() {
         return (
-            <Grid fluid>
+            <Grid fluid >
                 <Row className='no-gutter'>
-                    <MainControls dispatch = {this.props.dispatch} />
+                    <MainControls dispatch   = {this.props.dispatch}
+                                  audioFiles = {this.props.mediaBay} />
                 </Row>
 
                 <Row className='no-gutter' >
@@ -49,15 +50,16 @@ export default class App extends React.Component {
                     </Col>
 
                     <Col xsHidden sm={6} md={6} lg={6}>
-                        <MediaBay audioFiles={this.props.mediaBay}
-                                  peaksRaw={this.state.peaksRaw} />
+                        <MediaBay audioFiles = {this.props.mediaBay}
+                                  peaksRaw   = {this.state.peaksRaw} />
                     </Col>
                 </Row>
 
                 <Row className='no-gutter' >
-                    <Ruler cursorTC    = {this.props.cursorTC}
-                           dispatch    = {this.props.dispatch}
-                           tracksAmount = {this.props.tracks.length + 1} />
+                    <Ruler cursorTC     = {this.props.cursorTC}
+                           dispatch     = {this.props.dispatch}
+                           isPlaying    = {this.props.isPlaying}
+                           tracksAmount = {this.props.tracks.length} />
                 </Row>
 
                 <Row className='no-gutter' >
@@ -68,7 +70,7 @@ export default class App extends React.Component {
                     <AddNewTrackBtn dispatch={this.props.dispatch} />
                 </Row>
 
-                {/*<Row><$$$test stateData={this.state} /></Row>*/}
+                {/*<Row><$$$test/></Row>*/}
 
 
             </Grid>

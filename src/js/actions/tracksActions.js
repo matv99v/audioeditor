@@ -59,3 +59,10 @@ export function changeVolume(trackId, volume) {
         payload: {trackId, volume}
     };
 }
+
+export function dropAudioOnTrack(trackId, audioSourceUrl) {
+    return {
+        type: 'DROP_AUDIO_ON_TRACK',
+        payload: {trackId, audioSourceUrl}
+    };
+}

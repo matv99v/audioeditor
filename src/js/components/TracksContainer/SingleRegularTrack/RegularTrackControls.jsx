@@ -7,19 +7,15 @@ import {Grid} from 'react-bootstrap/lib';
 import {Col}  from 'react-bootstrap/lib';
 import {Row}  from 'react-bootstrap/lib';
 
-import Slider      from '../sharedComponents/Slider.jsx';
-import VolumeMeter from '../sharedComponents/VolumeMeter.jsx';
-import TrackNumber from '../sharedComponents/TrackNumber.jsx';
+import Slider      from '../../sharedComponents/Slider.jsx';
+import VolumeMeter from '../../sharedComponents/VolumeMeter.jsx';
+import TrackNumber from '../../sharedComponents/TrackNumber.jsx';
 
-import { deleteTrack } from '../../actions/tracksActions.js';
-import { addNewMarker } from '../../actions/tracksActions.js';
-import { removeMarker } from '../../actions/tracksActions.js';
-import { soloTrack } from '../../actions/tracksActions.js';
-import { muteTrack } from '../../actions/tracksActions.js';
+import { deleteTrack, addNewMarker, removeMarker, soloTrack, muteTrack } from '../../../actions/tracksActions.js';
 
-import {TRACK_HEAD} from '../../constants.js';
+import {TRACK_HEAD} from '../../../constants.js';
 
-import getColorById from '../../helpers/getColorById.js';
+import getColorById from '../../../helpers/getColorById.js';
 
 
 
@@ -30,26 +26,26 @@ import './RegularTrackControls.scss';
 export default class RegularTrackControls extends React.Component {
     handleDeleteTrackBtn = (e) => {
         e.stopPropagation();
-        this.props.dispatch( deleteTrack(this.props.id) );
+        this.props.dispatch( deleteTrack(this.props.trackData.id) );
     };
 
     handleAddNewMarkerBtn = (e) => {
-        this.props.dispatch( addNewMarker(this.props.cursorTC, this.props.id) );
+        this.props.dispatch( addNewMarker(this.props.cursorTC, this.props.trackData.id) );
     };
 
     handleRemoveMarkerBtn = (e) => {
         e.stopPropagation();
-        this.props.dispatch( removeMarker(this.props.cursorTC, this.props.id) );
+        this.props.dispatch( removeMarker(this.props.cursorTC, this.props.trackData.id) );
     };
 
     handleMuteClick = (e) => {
         e.stopPropagation();
-        this.props.dispatch( muteTrack(this.props.id) );
+        this.props.dispatch( muteTrack(this.props.trackData.id) );
     };
 
     handleSoloClick = (e) => {
         e.stopPropagation();
-        this.props.dispatch( soloTrack(this.props.id) );
+        this.props.dispatch( soloTrack(this.props.trackData.id) );
     };
 
     render() {
@@ -59,18 +55,17 @@ export default class RegularTrackControls extends React.Component {
 
                     <Row className='RegularTrackControls__head no-gutter'
                          style={{height: TRACK_HEAD,
-                                 backgroundColor: getColorById(this.props.id)
+                                 backgroundColor: getColorById(this.props.trackData.id)
                          }}>
-                         <span className='RegularTrackControls__trackName'>Stick</span>
-                         {/* <span className='RegularTrackControls__newAudioBtn'>
-                            <button><Glyphicon glyph='edit'/></button>
-                        </span> */}
+                         <span className='RegularTrackControls__trackName'>
+                            {this.props.audioFileName}
+                        </span>
                     </Row>
 
                     <Row className='no-gutter' >
 
                         <Col xs={1}>
-                            <TrackNumber id={this.props.id} />
+                            <TrackNumber id={this.props.trackData.id} />
                         </Col>
 
                         <Col xs={10} >
@@ -121,9 +116,9 @@ export default class RegularTrackControls extends React.Component {
 
                                 <Row className='no-gutter'>
                                     <Slider height='25'
-                                            volume={this.props.volume}
+                                            volume={this.props.trackData.volume}
                                             dispatch={this.props.dispatch}
-                                            id={this.props.id}
+                                            id={this.props.trackData.id}
                                     />
                                 </Row>
 

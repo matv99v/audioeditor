@@ -1,0 +1,10 @@
+@import '../../../../scss/variables.scss';
+
+
+.SingleAudioFile__container {
+    &:hover {
+        background-color: $timeLineColor;
+        cursor: grab;
+
+    }
+}

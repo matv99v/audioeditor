@@ -15,31 +15,40 @@ import AddNewTrackBtn     from './AddNewTrackBtn.jsx';
 import $$$test         from './$$$test.jsx';
 import {PATH_TO_VIDEO} from '../constants.js';
 
+import { DragDropContext } from 'react-dnd';
+import HTML5Backend from 'react-dnd-html5-backend';
+
+
 
 import getAudioBufferAsync from '../helpers/getAudioBufferAsync.js';
 import './App.scss';
 
-@connect(store => {
-    return store;
-})
-
-
+@DragDropContext(HTML5Backend)
+@connect(store => store)
 export default class App extends React.Component {
-    state = { peaksRaw: [] };
+    state = { peaksRaw: [], isDraggingAudioFile: false };
 
     componentDidMount() {
         getAudioBufferAsync(PATH_TO_VIDEO)
-            .then( audioBuffer => {
+            .then(audioBuffer => {
                 this.setState( {peaksRaw: audioBuffer.getChannelData(0)} );
-            });
-    }
+            })
+            .catch(e => {console.log(e)});
+    };
+
+    handleDragAudioFile = (isDragging) => {
+        this.setState({isDraggingAudioFile: isDragging})
+    };
 
     render() {
         return (
             <Grid fluid >
                 <Row className='no-gutter'>
-                    <MainControls dispatch   = {this.props.dispatch}
-                                  audioFiles = {this.props.mediaBay} />
+                    <MainControls dispatch  = {this.props.dispatch}
+                                  isPlaying = {this.props.isPlaying}
+                                  tracks    = {this.props.tracks}
+                                  cursorTC  = {this.props.cursorTC}
+                                  mediaBay  = {this.props.mediaBay} />
                 </Row>
 
                 <Row className='no-gutter' >
@@ -50,8 +59,10 @@ export default class App extends React.Component {
                     </Col>
 
                     <Col xsHidden sm={6} md={6} lg={6}>
-                        <MediaBay audioFiles = {this.props.mediaBay}
-                                  peaksRaw   = {this.state.peaksRaw} />
+                        <MediaBay audioFiles          = {this.props.mediaBay}
+                                  isPlaying           = {this.props.isPlaying}
+                                  handleDragAudioFile = {this.handleDragAudioFile}
+                                  peaksRaw            = {this.state.peaksRaw} />
                     </Col>
                 </Row>
 
@@ -63,15 +74,17 @@ export default class App extends React.Component {
                 </Row>
 
                 <Row className='no-gutter' >
-                    <TracksContainer {...this.props} peaksRaw={this.state.peaksRaw} />
+                    <TracksContainer
+                        {...this.props}
+                        isDragging = {this.state.isDraggingAudioFile}
+                        peaksRaw   = {this.state.peaksRaw} />
                 </Row>
 
                 <Row className='no-gutter' >
-                    <AddNewTrackBtn dispatch={this.props.dispatch} />
+                    <AddNewTrackBtn dispatch = {this.props.dispatch} />
                 </Row>
 
                 {/*<Row><$$$test/></Row>*/}
-
 
             </Grid>
         );

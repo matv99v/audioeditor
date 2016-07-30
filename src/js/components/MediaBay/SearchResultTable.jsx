@@ -4,6 +4,7 @@ import './SearchResultTable.scss';
 import {Table}       from 'react-bootstrap/lib';
 import {Glyphicon}   from 'react-bootstrap/lib';
 
+import SingleAudioFile from './SingleAudioFile/SingleAudioFile.jsx';
 
 
 export default class SearchResultTable extends React.Component {
@@ -11,7 +12,7 @@ export default class SearchResultTable extends React.Component {
         return (
             <div className='SearchResultTable__container'>
 
-                <Table striped bordered condensed >
+                <Table striped bordered condensed>
                     <thead>
                         <tr>
                             <th>#</th>
@@ -23,24 +24,16 @@ export default class SearchResultTable extends React.Component {
 
                     <tbody>
                         {
-                            this.props.audioFiles.map( (el, i) => {
+                            this.props.audioFiles.map((el, i) => {
                                 return (
-                                    <tr key={i}>
-                                        <td>{el.id}</td>
-                                        <td>{el.name}</td>
-                                        <td>{el.duration}</td>
-                                        <td>
-                                            {
-                                                [...Array(el.rating)]
-                                                    .map( (elment, j) => <Glyphicon glyph='star' key={j}/> )
-                                            }
-                                        </td>
-                                    </tr>
+                                    <SingleAudioFile
+                                        key                     = {i}
+                                        number                  = {i}
+                                        handleDragAudioFile     = {this.props.handleDragAudioFile}
+                                        audiofile               = {el} />
                                 );
                             })
                         }
-
-
                     </tbody>
                 </Table>
 

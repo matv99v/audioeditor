@@ -20,16 +20,15 @@ export default class Video extends React.Component {
     componentWillReceiveProps = (nextProps) => {
         // console.log(this.props.isPlaying, nextProps.isPlaying);
         if (!this.props.isPlaying && nextProps.isPlaying) { // false true
-            console.log('playing');
+            // console.log('playing');
             this.refs.videoElement.play();
             this.animationFrameCallerId = requestAnimationFrame(this.handleTCchange);
-
         } else if (this.props.isPlaying && !nextProps.isPlaying) { // true false
-            console.log('stopping');
+            // console.log('stopping');
             this.refs.videoElement.pause();
             cancelAnimationFrame(this.animationFrameCallerId);
         } else if (!this.props.isPlaying && !nextProps.isPlaying) { // false false
-            console.log('set TC');
+            // console.log('set TC');
             const curTime = (nextProps.cursorTC / 100) * this.refs.videoElement.duration;
             this.refs.videoElement.currentTime = curTime;
         }
@@ -38,14 +37,15 @@ export default class Video extends React.Component {
     render() {
         return (
             <div className='Video__container'>
-                <div className='Video__timecode'>{this.props.cursorTC}</div>
+                <div className='Video__timecode'>{(+this.props.cursorTC).toFixed(1)}</div>
 
-                <video width='100%'
-                       height='auto'
+                <video width     = '100%'
+                       height    = 'auto'
                        muted
-                       className='Video__videoElement'
-                       ref='videoElement' >
-                    <source src={PATH_TO_VIDEO} type='video/mp4'/>
+                       className = 'Video__videoElement'
+                       ref       = 'videoElement' >
+                    <source src={PATH_TO_VIDEO}
+                            type='video/mp4'/>
                 </video>
             </div>
         );

@@ -1,0 +1,9 @@
+@import '../../../scss/variables.scss';
+
+.canDrop {
+    background-color: yellow !important;
+}
+
+.SingleRegularTrack__container{
+    border-bottom: 1px solid $appBlackBackground;
+}

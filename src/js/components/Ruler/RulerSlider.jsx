@@ -1,6 +1,4 @@
 import React from 'react';
-import lodashDebounce from 'lodash.debounce';
-
 import './RulerSlider.scss';
 
 import { MARKER_WIDTH, TRACK_HEIGHT } from '../../constants.js';

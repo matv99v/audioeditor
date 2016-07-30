@@ -1,6 +1,7 @@
- @import '../../../scss/variables.scss';
+ @import '../../../../scss/variables.scss';
 
 .OriginalTrackControls__container {
+    border-right: 1px solid $appBlackBackground;
 }
 
 .OriginalTrackControls__soloBtn {

@@ -14,6 +14,9 @@ import SearchResultTable from './MediaBay/SearchResultTable.jsx';
 import {BAR_WIDTH, TRACK_HEIGHT} from '../constants.js';
 
 export default class MediaBay extends React.Component {
+    shouldComponentUpdate = nextProps => {
+        return !nextProps.isPlaying;
+    };
 
     render() {
         return (
@@ -22,10 +25,13 @@ export default class MediaBay extends React.Component {
 
                     <Row className='no-gutter'>
                         <SearchField />
+
                     </Row>
 
                     <Row className='no-gutter'>
-                        <SearchResultTable audioFiles={this.props.audioFiles}/>
+                        <SearchResultTable
+                            handleDragAudioFile     = {this.props.handleDragAudioFile}
+                            audioFiles              = {this.props.audioFiles} />
                     </Row>
 
                     <Row className='no-gutter'>

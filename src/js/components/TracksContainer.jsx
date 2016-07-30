@@ -1,10 +1,10 @@
 import React from 'react';
 
-import RegularTrackControls from './TracksContainer/RegularTrackControls.jsx';
-import RegularTrackTimeline from './TracksContainer/RegularTrackTimeline.jsx';
+// import RegularTrackControls from './TracksContainer/RegularTrackControls.jsx';
+// import RegularTrackTimeline from './TracksContainer/RegularTrackTimeline.jsx';
 
-import OriginalTrackControls from './TracksContainer/OriginalTrackControls.jsx';
-import SvgWaveForm from './sharedComponents/SvgWaveForm.jsx';
+import SingleRegularTrack from './TracksContainer/SingleRegularTrack.jsx';
+import SingleOriginalTrack from './TracksContainer/SingleOriginalTrack.jsx';
 
 
 import {Grid}  from 'react-bootstrap/lib';
@@ -12,60 +12,36 @@ import {Row}   from 'react-bootstrap/lib';
 import {Col}   from 'react-bootstrap/lib';
 
 import {TRACK_HEIGHT, BAR_WIDTH, MARKER_WIDTH} from '../constants.js';
-
-
 import './TracksContainer.scss';
 
 
-export default class TracksContainer extends React.Component {
 
+export default class TracksContainer extends React.Component {
     render() {
         return (
             <Grid fluid className='TracksContainer'>
 
-                <Row className='TracksContainer__singleTrackCont no-gutter'>
-                    <Col xsHidden sm={3} md={3}>
-                        <OriginalTrackControls dispatch  = {this.props.dispatch}
-                                               trackData = {this.props.tracks[0]}
-                                               id        = {this.props.tracks[0].id}
-                                               volume    = {this.props.tracks[0].volume}
-                                               />
-                    </Col>
-
-                    <Col xs={12} sm={9} md={9}>
-                        <SvgWaveForm peaksRaw = {this.props.peaksRaw} />
-                    </Col>
-                </Row>
+                <SingleOriginalTrack className='TracksContainer__singleTrackCont'
+                    trackData = {this.props.tracks[0]}
+                    peaksRaw  = {this.props.peaksRaw}
+                    dispatch  = {this.props.dispatch} />
 
                 {
                     this.props.tracks.map( (el, i) => {
+                        let audioFileData = this.props.mediaBay.find(audioFile => audioFile.path === el.audioUrl);
+                        audioFileData = audioFileData ? audioFileData.name : null;
                         return (
-                            <Row className='TracksContainer__singleTrackCont no-gutter'
-                                 key={i} >
-
-                                <Col xsHidden sm={3} md={3}>
-                                    <RegularTrackControls id        = {el.id}
-                                                          trackData = {el}
-                                                          cursorTC  = {this.props.cursorTC}
-                                                          dispatch  = {this.props.dispatch}
-                                                          volume    = {el.volume} />
-                                </Col>
-
-                                <Col xs={12} sm={9} md={9} >
-                                    <div style={{position: 'relative'}}>
-                                        <RegularTrackTimeline
-                                            id        = {el.id}
-                                            trackData = {el}
-                                            cursorTC  = {this.props.cursorTC}
-                                            dispatch  = {this.props.dispatch}
-                                        />
-                                    </div>
-                                </Col>
-
-                            </Row>
+                            <SingleRegularTrack className='TracksContainer__singleTrackCont'
+                                key           = {i}
+                                trackData     = {el}
+                                audioFileName = {audioFileData}
+                                cursorTC      = {this.props.cursorTC}
+                                isDragging    = {this.props.isDragging}
+                                dispatch      = {this.props.dispatch} />
                         );
                     }).slice(1)
                 }
+
             </Grid>
         );
     }

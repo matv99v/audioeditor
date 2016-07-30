@@ -8,14 +8,11 @@
 
     table {
         border: none;
-    }
-
-    table thead{
-    }
-
-    table td, table th  {
-        border: none !important;
         background-color: $rulerColor;
+    }
+
+    td, th  {
+        border: none !important;
     }
 
     input {

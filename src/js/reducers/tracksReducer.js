@@ -8,52 +8,11 @@
 //         volume           : 50,
 //         sfxPack          : null, // pack of sounds to play
 //         isActive         : false
-//     },
-//     {
-//         id               : 1,
-//         showExtendedOpts : false,
-//         markers          : [0, 22, 10, 5, 30, 55, 80, 100, 50],
-//         mute             : false,
-//         solo             : false,
-//         volume           : 50,
-//         sfxPack          : null,
-//         isActive         : true
-//
-//     },
-//     {
-//         id               : 2,
-//         showExtendedOpts : false,
-//         markers          : [10, 20, 30, 75],
-//         mute             : false,
-//         solo             : false,
-//         volume           : 50,
-//         sfxPack          : null,
-//         isActive         : false
-//
-//     },
-//     {
-//         id               : 3,
-//         showExtendedOpts : false,
-//         markers          : [0, 1, 2, 3, 4],
-//         mute             : false,
-//         solo             : false,
-//         volume           : 50,
-//         sfxPack          : null,
-//         isActive         : false
-//
-//     },
-//     {
-//         id               : 4,
-//         showExtendedOpts : false,
-//         markers          : [98, 99, 100],
-//         mute             : false,
-//         solo             : false,
-//         volume           : 50,
-//         sfxPack          : null,
-//         isActive         : false
-//
 //     }
 // ];
+
+import { PATH_TO_VIDEO } from '../constants.js';
+
 
 function getEmptyTrack() {
     return  {
@@ -63,7 +22,7 @@ function getEmptyTrack() {
         mute             : false,
         solo             : false,
         volume           : 50,
-        sfxPack          : null,
+        audioUrl         : null,
         isActive         : false
     };
 }
@@ -74,7 +33,9 @@ const origTrackInitState = {
     mute     : false,
     solo     : false,
     volume   : 50,
-    isActive : false
+    isActive : false,
+    audioUrl : PATH_TO_VIDEO,
+    markers  : [0],
 };
 
 export default function tracksReducer(state = [origTrackInitState], action) {
@@ -152,6 +113,14 @@ export default function tracksReducer(state = [origTrackInitState], action) {
                     el.volume = action.payload.volume;
                 }
                 return el;
+            });
+
+        case 'DROP_AUDIO_ON_TRACK':
+            return state.map(track => {
+                if (track.id === action.payload.trackId) {
+                    track.audioUrl = action.payload.audioSourceUrl;
+                }
+                return track;
             });
 
         default:

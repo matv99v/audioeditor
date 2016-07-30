@@ -24,19 +24,46 @@ export default class MainControls extends React.Component {
     audioFactory = new AudioFactory();
 
     handlePlayBtn = () => {
+        const duration = this.audioFactory.getVideoDuration();
+
+        const phonograms = this.props.tracks.map(track => {
+            return {
+                audioUrl: track.audioUrl,
+                markers : track.markers.map(marker => marker * duration / 100 ),
+                volume  : track.mute ? 0 : track.volume / 100
+            };
+        });
+
         this.props.dispatch( pressPlay() );
-        this.audioFactory.playAll();
+        this.audioFactory.playAll(
+            phonograms,
+            this.props.cursorTC * duration / 100
+        );
     };
 
     handleStopBtn = () => {
-        this.props.dispatch( pressStop() );
         this.audioFactory.stopAll();
+        this.props.dispatch( pressStop() );
     }
 
-    componentDidMount = () => {
-        this.audioFactory.loadSoundFiles(
-            this.props.audioFiles.map(audio => audio.path)
+    handleDownloadBtn = () => {
+        console.log(
+            this.audioFactory.getState()
         );
+    };
+
+    componentDidMount = () => {
+    };
+
+    componentWillReceiveProps = (nextProps) => {
+        if (!nextProps.isPlaying) {
+            const audioUrls = nextProps.tracks.map(track => track.audioUrl);
+            this.audioFactory.loadSoundFiles(audioUrls);
+        }
+    };
+
+    shouldComponentUpdate = (nextProps) => {
+        return !nextProps.isPlaying;
     };
 
     render() {
@@ -46,21 +73,21 @@ export default class MainControls extends React.Component {
                     <ButtonGroup justified>
 
                         <ButtonGroup bsSize='large' >
-                            <Button className='MainControls__btn_active'
-                                    onClick={this.handlePlayBtn}>
+                            <Button onClick={this.handlePlayBtn}>
                                 <Glyphicon glyph='play'  />
                             </Button>
                         </ButtonGroup>
 
-                        <ButtonGroup bsSize='large'
-                                     onClick={this.handleStopBtn}>
-                            <Button>
+                        <ButtonGroup bsSize='large'>
+                            <Button onClick={this.handleStopBtn}>
                                 <Glyphicon glyph='stop' />
                             </Button>
                         </ButtonGroup>
 
                         <ButtonGroup bsSize='large'>
-                            <Button><Glyphicon glyph='download-alt' /></Button>
+                            <Button onClick={this.handleDownloadBtn}>
+                                <Glyphicon glyph='download-alt' />
+                            </Button>
                         </ButtonGroup>
 
                         <ButtonGroup bsSize='large'>

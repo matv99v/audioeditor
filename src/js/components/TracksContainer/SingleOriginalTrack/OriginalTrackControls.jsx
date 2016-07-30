@@ -7,16 +7,16 @@ import {Grid} from 'react-bootstrap/lib';
 import {Col}  from 'react-bootstrap/lib';
 import {Row}  from 'react-bootstrap/lib';
 
-import Slider      from '../sharedComponents/Slider.jsx';
-import VolumeMeter from '../sharedComponents/VolumeMeter.jsx';
-import TrackNumber from '../sharedComponents/TrackNumber.jsx';
+import Slider      from '../../sharedComponents/Slider.jsx';
+import VolumeMeter from '../../sharedComponents/VolumeMeter.jsx';
+import TrackNumber from '../../sharedComponents/TrackNumber.jsx';
 
-import { soloTrack } from '../../actions/tracksActions.js';
-import { muteTrack } from '../../actions/tracksActions.js';
+import { soloTrack } from '../../../actions/tracksActions.js';
+import { muteTrack } from '../../../actions/tracksActions.js';
 
-import {TRACK_HEAD} from '../../constants.js';
+import {TRACK_HEAD} from '../../../constants.js';
 
-import getColorById from '../../helpers/getColorById.js';
+import getColorById from '../../../helpers/getColorById.js';
 
 
 
@@ -34,11 +34,11 @@ export default class OriginalTrackControls extends React.Component {
     };
 
     handleMuteClick = (e) => {
-        this.props.dispatch( muteTrack(this.props.id) );
+        this.props.dispatch( muteTrack(this.props.trackData.id) );
     };
 
     handleSoloClick = (e) => {
-        this.props.dispatch( soloTrack(this.props.id) );
+        this.props.dispatch( soloTrack(this.props.trackData.id) );
     };
 
     render() {
@@ -90,7 +90,10 @@ export default class OriginalTrackControls extends React.Component {
 
 
                                 <Row className='no-gutter'>
-                                    <Slider height='25' volume='50' dispatch={this.props.dispatch} id={this.props.id}/>
+                                    <Slider height='25'
+                                            volume={this.props.trackData.volume} 
+                                            dispatch={this.props.dispatch}
+                                            id={this.props.trackData.id}/>
                                 </Row>
                             </Grid>
                         </Col>

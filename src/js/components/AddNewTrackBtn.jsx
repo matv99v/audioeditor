@@ -13,6 +13,10 @@ export default class AddNewTrackBtn extends React.Component {
         this.props.dispatch(addNewTrack());
     };
 
+    shouldComponentUpdate = (nextProps) => {
+        return false;
+    };
+
     render() {
         return (
             <div className = 'AddNewTrackBtn__container'

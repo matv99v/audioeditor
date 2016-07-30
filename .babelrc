@@ -6,10 +6,5 @@
         "transform-es2015-spread",
         "transform-object-rest-spread",
         "transform-decorators-legacy"
-    ],
-    "env": {
-        "HMR": {
-            "presets": ["react-hmre"]
-       }
-    }
+    ]
 }

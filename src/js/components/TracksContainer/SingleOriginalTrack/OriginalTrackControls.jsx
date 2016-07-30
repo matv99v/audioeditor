@@ -58,7 +58,7 @@ export default class OriginalTrackControls extends React.Component {
                             <TrackNumber  />
                         </Col>
 
-                        <Col xs={10} >
+                        <Col xs={11} >
                             <Grid fluid>
                                 <Row className='no-gutter' className='OriginalTrackControls__buttonGroup'>
                                     <ButtonGroup justified>
@@ -91,16 +91,16 @@ export default class OriginalTrackControls extends React.Component {
 
                                 <Row className='no-gutter'>
                                     <Slider height='25'
-                                            volume={this.props.trackData.volume} 
+                                            volume={this.props.trackData.volume}
                                             dispatch={this.props.dispatch}
                                             id={this.props.trackData.id}/>
                                 </Row>
                             </Grid>
                         </Col>
 
-                        <Col xs={1} className='OriginalTrackControls__volumeMeter'>
+                        {/* <Col xs={1} className='OriginalTrackControls__volumeMeter'>
                             <VolumeMeter />
-                        </Col>
+                        </Col> */}
 
                     </Row>
                 </Grid>

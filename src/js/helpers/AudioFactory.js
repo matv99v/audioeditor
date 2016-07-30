@@ -71,7 +71,7 @@ export default function AudioFactory() {
                 sound.markers.forEach(marker => {
                     const offset = i === 0 ? cursorTC : 0;
                     const delay  = i === 0 ? 0 : (marker - cursorTC);
-                    if (delay >= 0 ) {
+                    if (delay >= 0 && sound.audioUrl) {
                         this.play(sound.audioUrl, delay, sound.volume, offset);
                     }
                 });

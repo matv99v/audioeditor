@@ -5,29 +5,32 @@ import { MARKER_WIDTH, TRACK_HEIGHT } from '../../constants.js';
 import { setNewTimeCode } from '../../actions/curosrActions.js';
 
 
-
-
 export default class RulerSlider extends React.Component {
 
     handleSliderChange = (e) => {
+        e.preventDefault();
         e.stopPropagation();
         this.props.dispatch( setNewTimeCode(e.target.value) );
     };
 
-    rulerSegments = [...Array(20)].map((el, i, array) => {
-        const step        = 100 / array.length;
-        const curPosition = step * i;
-        const label       = i % 4 === 0 ? curPosition : null;
-        const height      = i % 4 === 0 ? '100%' : '50%';
-        return <div className = 'RulerSlider__timeStamps'
-                    key={i}
-                    style = {{
-                        left: `${curPosition}%`,
-                        height
-                    }} >
-                    {label}
-                </div>;
-    });
+    componentWillReceiveProps = (nextProps) => {
+        if (this.props.videoDuration !== nextProps.videoDuration) {
+            this.rulerSegments = [...Array(40)].map((el, i, array) => {
+                const step        = 100 / array.length;
+                const curPosition = step * i;
+                const label       = i % 5 === 0 ? (curPosition * nextProps.videoDuration / 100).toFixed(2) : null;
+                const height      = i % 5 === 0 ? '100%' : '50%';
+                return <div className = 'RulerSlider__timeStamps'
+                            key   = {i}
+                            style = {{
+                                left: `${curPosition}%`,
+                                height
+                            }} >
+                            {label}
+                        </div>;
+            });
+        }
+    }
 
     render() {
         const pointerHeight = this.props.tracksAmount * (TRACK_HEIGHT + 1) + 4;
@@ -49,10 +52,10 @@ export default class RulerSlider extends React.Component {
 
                 </div>
 
-                <input className = 'RulerSlider__generic'
-                       type      = 'range'
-                       step      = '0.01'
-                       onChange  = {this.handleSliderChange}
+                <input className    = 'RulerSlider__generic'
+                       type         = 'range'
+                       step         = '0.01'
+                       onChange     = {this.handleSliderChange}
                 />
             </div>
 

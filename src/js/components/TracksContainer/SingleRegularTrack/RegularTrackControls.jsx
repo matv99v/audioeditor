@@ -68,7 +68,7 @@ export default class RegularTrackControls extends React.Component {
                             <TrackNumber id={this.props.trackData.id} />
                         </Col>
 
-                        <Col xs={10} >
+                        <Col xs={11} >
                             <Grid fluid>
 
                                 <Row className='no-gutter' className='RegularTrackControls__buttonGroup'>
@@ -125,9 +125,9 @@ export default class RegularTrackControls extends React.Component {
                             </Grid>
                         </Col>
 
-                        <Col xs={1} className='RegularTrackControls__volumeMeter'>
+                        {/* <Col xs={1} className='RegularTrackControls__volumeMeter'>
                             <VolumeMeter />
-                        </Col>
+                        </Col> */}
 
                     </Row>
                 </Grid>

@@ -26,36 +26,44 @@ import './App.scss';
 @DragDropContext(HTML5Backend)
 @connect(store => store)
 export default class App extends React.Component {
-    state = { peaksRaw: [], isDraggingAudioFile: false };
+    state = {
+        peaksRaw           : [],
+        isDraggingAudioFile: false,
+        videoDuration      : null
+    };
 
     componentDidMount() {
         getAudioBufferAsync(PATH_TO_VIDEO)
             .then(audioBuffer => {
-                this.setState( {peaksRaw: audioBuffer.getChannelData(0)} );
-            })
-            .catch(e => {console.log(e)});
-    };
+                this.setState( {
+                    peaksRaw     : audioBuffer.getChannelData(0),
+                    videoDuration: audioBuffer.duration}
+                );
+            });
+    }
 
     handleDragAudioFile = (isDragging) => {
-        this.setState({isDraggingAudioFile: isDragging})
-    };
+        this.setState({isDraggingAudioFile: isDragging});
+    }
 
     render() {
         return (
             <Grid fluid >
                 <Row className='no-gutter'>
-                    <MainControls dispatch  = {this.props.dispatch}
-                                  isPlaying = {this.props.isPlaying}
-                                  tracks    = {this.props.tracks}
-                                  cursorTC  = {this.props.cursorTC}
-                                  mediaBay  = {this.props.mediaBay} />
+                    <MainControls dispatch      = {this.props.dispatch}
+                                  isPlaying     = {this.props.isPlaying}
+                                  tracks        = {this.props.tracks}
+                                  cursorTC      = {this.props.cursorTC}
+                                  videoDuration = {this.state.videoDuration}
+                                  mediaBay      = {this.props.mediaBay} />
                 </Row>
 
                 <Row className='no-gutter' >
                     <Col xs={12} sm={6} md={6} lg={6} >
-                        <Video cursorTC  = {this.props.cursorTC}
-                               isPlaying = {this.props.isPlaying}
-                               dispatch  = {this.props.dispatch}/>
+                        <Video cursorTC      = {this.props.cursorTC}
+                               isPlaying     = {this.props.isPlaying}
+                               videoDuration = {this.state.videoDuration}
+                               dispatch      = {this.props.dispatch} />
                     </Col>
 
                     <Col xsHidden sm={6} md={6} lg={6}>
@@ -67,10 +75,11 @@ export default class App extends React.Component {
                 </Row>
 
                 <Row className='no-gutter' >
-                    <Ruler cursorTC     = {this.props.cursorTC}
-                           dispatch     = {this.props.dispatch}
-                           isPlaying    = {this.props.isPlaying}
-                           tracksAmount = {this.props.tracks.length} />
+                    <Ruler cursorTC      = {this.props.cursorTC}
+                           dispatch      = {this.props.dispatch}
+                           isPlaying     = {this.props.isPlaying}
+                           videoDuration = {this.state.videoDuration}
+                           tracksAmount  = {this.props.tracks.length} />
                 </Row>
 
                 <Row className='no-gutter' >

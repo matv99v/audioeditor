@@ -4,8 +4,7 @@ import './Video.scss';
 import { PATH_TO_VIDEO } from '../constants.js';
 
 import { setNewTimeCode } from '../actions/curosrActions.js';
-
-
+import { pressStop }      from '../actions/mainControlsActions.js';
 
 export default class Video extends React.Component {
     animationFrameCallerId = null;
@@ -18,26 +17,30 @@ export default class Video extends React.Component {
     };
 
     componentWillReceiveProps = (nextProps) => {
-        // console.log(this.props.isPlaying, nextProps.isPlaying);
-        if (!this.props.isPlaying && nextProps.isPlaying) { // false true
-            // console.log('playing');
+        if (!this.props.isPlaying && nextProps.isPlaying) {
             this.refs.videoElement.play();
             this.animationFrameCallerId = requestAnimationFrame(this.handleTCchange);
-        } else if (this.props.isPlaying && !nextProps.isPlaying) { // true false
-            // console.log('stopping');
+        } else if (this.props.isPlaying && !nextProps.isPlaying) {
             this.refs.videoElement.pause();
             cancelAnimationFrame(this.animationFrameCallerId);
-        } else if (!this.props.isPlaying && !nextProps.isPlaying) { // false false
-            // console.log('set TC');
-            const curTime = (nextProps.cursorTC / 100) * this.refs.videoElement.duration;
+        } else if (!this.props.isPlaying && !nextProps.isPlaying) {
+            const curTime = (nextProps.cursorTC / 100) * nextProps.videoDuration;
             this.refs.videoElement.currentTime = curTime;
         }
+    };
+
+    componentDidMount = () => {
+        this.refs.videoElement.onended = () => {
+            this.props.dispatch( pressStop() );
+        };
     };
 
     render() {
         return (
             <div className='Video__container'>
-                <div className='Video__timecode'>{(+this.props.cursorTC).toFixed(1)}</div>
+                <div className='Video__timecode'>
+                    {(this.props.cursorTC * this.props.videoDuration / 100).toFixed(2)}
+                </div>
 
                 <video width     = '100%'
                        height    = 'auto'

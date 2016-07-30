@@ -12,9 +12,10 @@ import Button from 'react-bootstrap/lib/Button';
 import getFileNameFromPath from '../helpers/getFileNameFromPath.js';
 import AudioFactory from '../helpers/AudioFactory.js';
 
-
 import { pressPlay } from '../actions/mainControlsActions.js';
 import { pressStop } from '../actions/mainControlsActions.js';
+import { setNewTimeCode } from '../actions/curosrActions.js';
+
 
 
 import './MainControls.scss';
@@ -47,12 +48,7 @@ export default class MainControls extends React.Component {
     }
 
     handleDownloadBtn = () => {
-        console.log(
-            this.audioFactory.getState()
-        );
-    };
-
-    componentDidMount = () => {
+        console.log( this.audioFactory.getState() );
     };
 
     componentWillReceiveProps = (nextProps) => {
@@ -64,6 +60,20 @@ export default class MainControls extends React.Component {
 
     shouldComponentUpdate = (nextProps) => {
         return !nextProps.isPlaying;
+    };
+
+    componentDidMount = () => {
+        window.addEventListener('keydown', (e) => {
+            switch (e.keyCode) {
+                case 37: // right btn
+                    break;
+                case 39: // left btn
+                    break;
+                case 32: // space btn
+                    break;
+                default:
+            }
+        });
     };
 
     render() {

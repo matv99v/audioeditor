@@ -13,11 +13,9 @@
 }
 
 .RulerSlider__view {
-    // background-color: $buttonColor;
     position: absolute;
     height: 100%;
     width: 75%;
-    // border-top: 1px solid $appBlackBackground;
 }
 
 .RulerSlider__generic {
@@ -84,7 +82,6 @@
 
 .RulerSlider__pointer {
     right: calc(-2 * #{$rulerPointerSize});
-    // top: $rulerPointerSize;
     bottom: 0;
     width: 0;
     height: 0;

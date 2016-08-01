@@ -1,10 +1,6 @@
 import React from 'react';
 import './Ruler.scss';
-
-import Col   from 'react-bootstrap/lib/Col';
-import Row   from 'react-bootstrap/lib/Row';
-import Grid   from 'react-bootstrap/lib/Grid';
-
+import {Grid, Row, Col}   from 'react-bootstrap/lib';
 import RulerSlider from './Ruler/RulerSlider.jsx';
 
 export default class Ruler extends React.Component {

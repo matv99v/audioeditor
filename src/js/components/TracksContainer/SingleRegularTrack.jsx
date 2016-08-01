@@ -1,14 +1,8 @@
 import React from 'react';
-
 import RegularTrackControls from './SingleRegularTrack/RegularTrackControls.jsx';
 import RegularTrackTimeline from './SingleRegularTrack/RegularTrackTimeline.jsx';
-
-import {Grid}  from 'react-bootstrap/lib';
-import {Row}   from 'react-bootstrap/lib';
-import {Col}   from 'react-bootstrap/lib';
-
-import { DropTarget } from 'react-dnd';
-
+import {Grid, Row, Col}     from 'react-bootstrap/lib';
+import { DropTarget }       from 'react-dnd';
 import './SingleRegularTrack.scss';
 
 const audioTrackTarget = {

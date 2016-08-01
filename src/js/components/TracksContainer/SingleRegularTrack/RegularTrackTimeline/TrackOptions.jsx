@@ -1,18 +1,10 @@
 import React from 'react';
-import {Glyphicon}   from 'react-bootstrap/lib';
-import {Col}   from 'react-bootstrap/lib';
-import {Row}   from 'react-bootstrap/lib';
-import {Grid}   from 'react-bootstrap/lib';
-
-import RegularTrackControls from '../RegularTrackControls.jsx';
-
-import './TrackOptions.scss';
-
-import {TRACK_HEIGHT} from '../../../../constants.js';
+import RegularTrackControls  from '../RegularTrackControls.jsx';
+import {TRACK_HEIGHT}        from '../../../../constants.js';
 import { showHiddenOptions } from '../../../../actions/tracksActions.js';
-import { selectPrevMarker }  from '../../../../actions/curosrActions.js';
-import { selectNextMarker }  from '../../../../actions/curosrActions.js';
-
+import { selectNextMarker, selectPrevMarker } from '../../../../actions/curosrActions.js';
+import {Grid, Row, Col, Glyphicon}            from 'react-bootstrap/lib';
+import './TrackOptions.scss';
 
 
 export default class TrackOptions extends React.Component {

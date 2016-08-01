@@ -1,17 +1,11 @@
 import React from 'react';
+import {Checkbox, Button, Grid, Row, Col} from 'react-bootstrap/lib';
+import {BAR_WIDTH, TRACK_HEIGHT}          from '../constants.js';
+import SvgWaveForm       from './sharedComponents/SvgWaveForm.jsx';
+import SearchField       from './MediaBay/SearchField.jsx';
+import SearchResultTable from './MediaBay/SearchResultTable.jsx';
 import './MediaBay.scss';
 
-import {Checkbox}    from 'react-bootstrap/lib';
-import {Button}      from 'react-bootstrap/lib';
-import {Grid}        from 'react-bootstrap/lib';
-import {Row}         from 'react-bootstrap/lib';
-import {Col}         from 'react-bootstrap/lib';
-
-import SvgWaveForm from './sharedComponents/SvgWaveForm.jsx';
-import SearchField from './MediaBay/SearchField.jsx';
-import SearchResultTable from './MediaBay/SearchResultTable.jsx';
-
-import {BAR_WIDTH, TRACK_HEIGHT} from '../constants.js';
 
 export default class MediaBay extends React.Component {
     shouldComponentUpdate = nextProps => {

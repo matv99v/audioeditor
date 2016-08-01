@@ -1,25 +1,10 @@
 import React from 'react';
-
-import {ButtonGroup} from 'react-bootstrap/lib';
-import {Button}      from 'react-bootstrap/lib';
-import {Glyphicon}   from 'react-bootstrap/lib';
-import {Grid} from 'react-bootstrap/lib';
-import {Col}  from 'react-bootstrap/lib';
-import {Row}  from 'react-bootstrap/lib';
-
-import Slider      from '../../sharedComponents/Slider.jsx';
-import VolumeMeter from '../../sharedComponents/VolumeMeter.jsx';
-import TrackNumber from '../../sharedComponents/TrackNumber.jsx';
-
+import {Row, Col, Grid, ButtonGroup, Button, Glyphicon} from 'react-bootstrap/lib';
 import { deleteTrack, addNewMarker, removeMarker, soloTrack, muteTrack } from '../../../actions/tracksActions.js';
-
+import Slider       from '../../sharedComponents/Slider.jsx';
+import TrackNumber  from '../../sharedComponents/TrackNumber.jsx';
 import {TRACK_HEAD} from '../../../constants.js';
-
 import getColorById from '../../../helpers/getColorById.js';
-
-
-
-
 import './RegularTrackControls.scss';
 
 
@@ -124,10 +109,6 @@ export default class RegularTrackControls extends React.Component {
 
                             </Grid>
                         </Col>
-
-                        {/* <Col xs={1} className='RegularTrackControls__volumeMeter'>
-                            <VolumeMeter />
-                        </Col> */}
 
                     </Row>
                 </Grid>

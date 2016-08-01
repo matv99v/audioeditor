@@ -1,9 +1,7 @@
 import React from 'react';
 import './RulerSlider.scss';
-
 import { MARKER_WIDTH, TRACK_HEIGHT } from '../../constants.js';
 import { setNewTimeCode } from '../../actions/curosrActions.js';
-
 
 export default class RulerSlider extends React.Component {
 

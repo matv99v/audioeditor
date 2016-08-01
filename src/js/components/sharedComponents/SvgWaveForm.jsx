@@ -1,14 +1,12 @@
 import React from 'react';
-import {Col}   from 'react-bootstrap/lib';
-import {Row}   from 'react-bootstrap/lib';
-import {Grid}   from 'react-bootstrap/lib';
-
-import getColorById from '../../helpers/getColorById.js';
+import {Grid, Col, Row}         from 'react-bootstrap/lib';
+import getColorById             from '../../helpers/getColorById.js';
+import arrayToDescreteExtremums from '../../helpers/arrayToDescreteExtremums';
+import { TRACK_HEIGHT, BAR_WIDTH, MARKER_WIDTH } from '../../constants.js';
 import './SvgWaveForm.scss';
 
-import {TRACK_HEIGHT, BAR_WIDTH, MARKER_WIDTH} from '../../constants.js';
 
-import arrayToDescreteExtremums from '../../helpers/arrayToDescreteExtremums';
+
 
 export default class SvgWaveForm extends React.Component {
     shouldComponentUpdate(nextProps) {

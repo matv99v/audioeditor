@@ -1,12 +1,8 @@
 import React from 'react';
-import './SingleAudioFile.scss';
-
-import {Table}       from 'react-bootstrap/lib';
-import {Glyphicon}   from 'react-bootstrap/lib';
-
-import { DragSource } from 'react-dnd';
-
+import { Table, Glyphicon }   from 'react-bootstrap/lib';
+import { DragSource }       from 'react-dnd';
 import { dropAudioOnTrack } from '../../../actions/tracksActions.js';
+import './SingleAudioFile.scss';
 
 
 const audioSource = {
@@ -17,8 +13,8 @@ const audioSource = {
         if (!monitor.didDrop()) return;
 
         const { audioSourcePath } = monitor.getItem();
-        const { dispatch }      = monitor.getDropResult();
-        const { trackId }       = monitor.getDropResult();
+        const { dispatch }        = monitor.getDropResult();
+        const { trackId }         = monitor.getDropResult();
         dispatch( dropAudioOnTrack(trackId, audioSourcePath));
     }
 };

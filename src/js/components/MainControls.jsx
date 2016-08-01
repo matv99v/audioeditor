@@ -1,25 +1,10 @@
-import React from 'react';
-
-import Grid  from 'react-bootstrap/lib/Grid';
-import Col   from 'react-bootstrap/lib/Col';
-import Row   from 'react-bootstrap/lib/Row';
-
-import ButtonGroup   from 'react-bootstrap/lib/ButtonGroup';
-import Glyphicon   from 'react-bootstrap/lib/Glyphicon';
-
-import Button from 'react-bootstrap/lib/Button';
-
-import getFileNameFromPath from '../helpers/getFileNameFromPath.js';
+import React        from 'react';
 import AudioFactory from '../helpers/AudioFactory.js';
-
-import { pressPlay } from '../actions/mainControlsActions.js';
-import { pressStop } from '../actions/mainControlsActions.js';
-import { setNewTimeCode } from '../actions/curosrActions.js';
-
-
-
+import getFileNameFromPath      from '../helpers/getFileNameFromPath.js';
+import { setNewTimeCode }       from '../actions/curosrActions.js';
+import { pressPlay, pressStop } from '../actions/mainControlsActions.js';
+import {Grid, Col, Row, ButtonGroup, Glyphicon, Button}  from 'react-bootstrap/lib';
 import './MainControls.scss';
-
 
 export default class MainControls extends React.Component {
     audioFactory = new AudioFactory();
@@ -60,20 +45,6 @@ export default class MainControls extends React.Component {
 
     shouldComponentUpdate = (nextProps) => {
         return !nextProps.isPlaying;
-    };
-
-    componentDidMount = () => {
-        window.addEventListener('keydown', (e) => {
-            switch (e.keyCode) {
-                case 37: // right btn
-                    break;
-                case 39: // left btn
-                    break;
-                case 32: // space btn
-                    break;
-                default:
-            }
-        });
     };
 
     render() {

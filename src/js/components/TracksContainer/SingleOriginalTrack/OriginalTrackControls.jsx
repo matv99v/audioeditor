@@ -1,26 +1,11 @@
 import React from 'react';
+import {Grid, Col, Row, Glyphicon, Button, ButtonGroup} from 'react-bootstrap/lib';
 
-import {ButtonGroup} from 'react-bootstrap/lib';
-import {Button}      from 'react-bootstrap/lib';
-import {Glyphicon}   from 'react-bootstrap/lib';
-import {Grid} from 'react-bootstrap/lib';
-import {Col}  from 'react-bootstrap/lib';
-import {Row}  from 'react-bootstrap/lib';
-
-import Slider      from '../../sharedComponents/Slider.jsx';
-import VolumeMeter from '../../sharedComponents/VolumeMeter.jsx';
-import TrackNumber from '../../sharedComponents/TrackNumber.jsx';
-
-import { soloTrack } from '../../../actions/tracksActions.js';
-import { muteTrack } from '../../../actions/tracksActions.js';
-
-import {TRACK_HEAD} from '../../../constants.js';
-
-import getColorById from '../../../helpers/getColorById.js';
-
-
-
-
+import Slider        from '../../sharedComponents/Slider.jsx';
+import TrackNumber   from '../../sharedComponents/TrackNumber.jsx';
+import { soloTrack, muteTrack } from '../../../actions/tracksActions.js';
+import {TRACK_HEAD}  from '../../../constants.js';
+import getColorById  from '../../../helpers/getColorById.js';
 import './OriginalTrackControls.scss';
 
 

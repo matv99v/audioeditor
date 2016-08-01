@@ -1,8 +1,8 @@
-import React from 'react';
-import './TrackNumber.scss';
-
+import React        from 'react';
 import getColorById from '../../helpers/getColorById.js';
 import {TRACK_HEIGHT, TRACK_HEAD} from '../../constants.js';
+import './TrackNumber.scss';
+
 
 
 export default class TrackNumber extends React.Component {

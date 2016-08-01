@@ -1,10 +1,9 @@
 import React from 'react';
-import './Video.scss';
-
-import { PATH_TO_VIDEO } from '../constants.js';
-
+import { PATH_TO_VIDEO }  from '../constants.js';
 import { setNewTimeCode } from '../actions/curosrActions.js';
 import { pressStop }      from '../actions/mainControlsActions.js';
+import './Video.scss';
+
 
 export default class Video extends React.Component {
     animationFrameCallerId = null;

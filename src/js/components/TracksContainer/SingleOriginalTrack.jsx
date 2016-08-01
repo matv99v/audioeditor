@@ -1,11 +1,7 @@
-import React from 'react';
-
-import {Col}  from 'react-bootstrap/lib';
-import {Row}  from 'react-bootstrap/lib';
-
+import React                 from 'react';
+import {Row, Col}            from 'react-bootstrap/lib';
 import OriginalTrackControls from './SingleOriginalTrack/OriginalTrackControls.jsx';
-import SvgWaveForm from '../sharedComponents/SvgWaveForm.jsx';
-
+import SvgWaveForm           from '../sharedComponents/SvgWaveForm.jsx';
 import './SingleOriginalTrack.scss';
 
 

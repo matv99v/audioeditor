@@ -1,20 +1,9 @@
 import React from 'react';
-
-// import RegularTrackControls from './TracksContainer/RegularTrackControls.jsx';
-// import RegularTrackTimeline from './TracksContainer/RegularTrackTimeline.jsx';
-
-import SingleRegularTrack from './TracksContainer/SingleRegularTrack.jsx';
+import SingleRegularTrack  from './TracksContainer/SingleRegularTrack.jsx';
 import SingleOriginalTrack from './TracksContainer/SingleOriginalTrack.jsx';
-
-
-import {Grid}  from 'react-bootstrap/lib';
-import {Row}   from 'react-bootstrap/lib';
-import {Col}   from 'react-bootstrap/lib';
-
+import {Grid, Col, Row}    from 'react-bootstrap/lib';
 import {TRACK_HEIGHT, BAR_WIDTH, MARKER_WIDTH} from '../constants.js';
 import './TracksContainer.scss';
-
-
 
 export default class TracksContainer extends React.Component {
     render() {

@@ -1,25 +1,15 @@
 import React  from 'react';
-import {Grid} from 'react-bootstrap/lib';
-import {Row}  from 'react-bootstrap/lib';
-import {Col}  from 'react-bootstrap/lib';
-
-import {connect} from 'react-redux';
-
+import { connect }     from 'react-redux';
 import MainControls    from './MainControls.jsx';
 import TracksContainer from './TracksContainer.jsx';
 import Video           from './Video.jsx';
 import Ruler           from './Ruler.jsx';
 import MediaBay        from './MediaBay.jsx';
-import AddNewTrackBtn     from './AddNewTrackBtn.jsx';
-
-import $$$test         from './$$$test.jsx';
-import {PATH_TO_VIDEO} from '../constants.js';
-
+import AddNewTrackBtn  from './AddNewTrackBtn.jsx';
+import { Grid, Row, Col }  from 'react-bootstrap/lib';
+import { PATH_TO_VIDEO }   from '../constants.js';
 import { DragDropContext } from 'react-dnd';
-import HTML5Backend from 'react-dnd-html5-backend';
-
-
-
+import HTML5Backend        from 'react-dnd-html5-backend';
 import getAudioBufferAsync from '../helpers/getAudioBufferAsync.js';
 import './App.scss';
 
@@ -92,8 +82,6 @@ export default class App extends React.Component {
                 <Row className='no-gutter' >
                     <AddNewTrackBtn dispatch = {this.props.dispatch} />
                 </Row>
-
-                {/*<Row><$$$test/></Row>*/}
 
             </Grid>
         );

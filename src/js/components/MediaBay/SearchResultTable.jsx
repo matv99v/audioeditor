@@ -1,10 +1,7 @@
-import React from 'react';
+import React              from 'react';
+import {Table, Glyphicon} from 'react-bootstrap/lib';
+import SingleAudioFile    from './SingleAudioFile/SingleAudioFile.jsx';
 import './SearchResultTable.scss';
-
-import {Table}       from 'react-bootstrap/lib';
-import {Glyphicon}   from 'react-bootstrap/lib';
-
-import SingleAudioFile from './SingleAudioFile/SingleAudioFile.jsx';
 
 
 export default class SearchResultTable extends React.Component {
@@ -27,10 +24,10 @@ export default class SearchResultTable extends React.Component {
                             this.props.audioFiles.map((el, i) => {
                                 return (
                                     <SingleAudioFile
-                                        key                     = {i}
-                                        number                  = {i}
-                                        handleDragAudioFile     = {this.props.handleDragAudioFile}
-                                        audiofile               = {el} />
+                                        key                 = {i}
+                                        number              = {i}
+                                        handleDragAudioFile = {this.props.handleDragAudioFile}
+                                        audiofile           = {el} />
                                 );
                             })
                         }

@@ -1,8 +1,6 @@
 import React from 'react';
-
-import './Slider.scss';
-
 import { changeVolume } from '../../actions/tracksActions.js';
+import './Slider.scss';
 
 
 export default class Slider extends React.Component {

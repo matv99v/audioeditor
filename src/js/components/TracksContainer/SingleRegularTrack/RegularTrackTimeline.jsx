@@ -1,17 +1,10 @@
 import React from 'react';
-import {Glyphicon}   from 'react-bootstrap/lib';
-import {Col}   from 'react-bootstrap/lib';
-import {Row}   from 'react-bootstrap/lib';
-
-
-import './RegularTrackTimeline.scss';
-
+import {Glyphicon, Col, Row}        from 'react-bootstrap/lib';
+import {TRACK_HEIGHT, MARKER_WIDTH} from '../../../constants.js';
+import { selectNewActiveTrack }     from '../../../actions/tracksActions.js';
 import TrackMarker  from './RegularTrackTimeline/TrackMarker.jsx';
 import TrackOptions from './RegularTrackTimeline/TrackOptions.jsx';
-
-import {TRACK_HEIGHT, MARKER_WIDTH} from '../../../constants.js';
-import { selectNewActiveTrack } from '../../../actions/tracksActions.js';
-
+import './RegularTrackTimeline.scss';
 
 
 export default class RegularTrackTimeline extends React.Component {

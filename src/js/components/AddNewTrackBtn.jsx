@@ -1,11 +1,8 @@
 import React from 'react';
 import './AddNewTrackBtn.scss';
-
-import {Glyphicon} from 'react-bootstrap/lib';
-
+import { Glyphicon } from 'react-bootstrap/lib';
 import { TRACK_HEIGHT } from '../constants.js';
 import { addNewTrack } from '../actions/tracksActions.js';
-
 
 
 export default class AddNewTrackBtn extends React.Component {
@@ -13,7 +10,7 @@ export default class AddNewTrackBtn extends React.Component {
         this.props.dispatch(addNewTrack());
     };
 
-    shouldComponentUpdate = (nextProps) => {
+    shouldComponentUpdate = () => {
         return false;
     };
 

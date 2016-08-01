@@ -1,11 +1,7 @@
 import React from 'react';
 import './TrackMarker.scss';
-
-
 import getColorById from '../../../../helpers/getColorById.js';
-
 import {TRACK_HEIGHT, MARKER_WIDTH} from '../../../../constants.js';
-
 
 export default class TrackMarker extends React.Component {
     render() {

@@ -14,7 +14,7 @@ module.exports = {
         {
             test: /\.jsx?$/,
             exclude: /node_modules/,
-            loader: 'babel-loader',
+            loader: 'babel-loader!eslint-loader',
         },
         {
             test: /\.scss?$/,
@@ -32,7 +32,10 @@ module.exports = {
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.optimize.UglifyJsPlugin({ mangle: false, sourcemap: false }),
   ],
-  // devServer: {
-  //     contentBase: '/public/'
-  // }
+  devServer: {
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+    }
+  }
+
 };

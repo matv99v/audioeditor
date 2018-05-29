@@ -1,18 +1,4 @@
-// const tracksInitState = [
-//     {
-//         id               : 0,
-//         showExtendedOpts : false, // boolean that represents view state of a single track (markers or extendedControls view)
-//         markers          : [0, 75, 85], // timecode markers in percents
-//         mute             : false,
-//         solo             : false,
-//         volume           : 50,
-//         sfxPack          : null, // pack of sounds to play
-//         isActive         : false
-//     }
-// ];
-
 import { PATH_TO_VIDEO } from '../constants.js';
-
 
 function getEmptyTrack() {
     return  {
@@ -35,7 +21,7 @@ const origTrackInitState = {
     volume   : 50,
     isActive : false,
     audioUrl : PATH_TO_VIDEO,
-    markers  : [0],
+    markers  : [0]
 };
 
 export default function tracksReducer(state = [origTrackInitState], action) {

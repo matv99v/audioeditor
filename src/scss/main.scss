@@ -11,17 +11,11 @@ html, body {
 }
 
 .btn {
-    // padding: 14px 24px;
     border: 0 none;
     font-weight: bolder;
-    // letter-spacing: 1px;
-    // text-transform: uppercase;
     border-radius: 0 !important;
     color: $appBlackBackground;
     text-shadow: none;
-
-
-
 }
 
 .btn-group:not(:last-of-type) {
@@ -35,25 +29,14 @@ html, body {
 
 .btn-default {
     background: $buttonColor;
-    // color: #ffffff;
 }
 
 .btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active, .open > .dropdown-toggle.btn-default {
     background: $buttonColor;
 }
 
-// .btn-default:active, .btn-default.active {
-//     background: #007299;
-//     box-shadow: none;
-// }
-
 button[disabled] {
     background-color: $buttonColor !important;
     color: $headerColor !important;
 
 }
-
-
-
-// view breakpoints
-// (0; 768) - [768; 992) - [1200; +inf)

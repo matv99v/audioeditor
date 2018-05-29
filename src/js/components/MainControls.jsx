@@ -1,6 +1,5 @@
 import React        from 'react';
 import AudioFactory from '../helpers/AudioFactory.js';
-import getFileNameFromPath      from '../helpers/getFileNameFromPath.js';
 import { setNewTimeCode }       from '../actions/curosrActions.js';
 import { pressPlay, pressStop } from '../actions/mainControlsActions.js';
 import {Grid, Col, Row, ButtonGroup, Glyphicon, Button}  from 'react-bootstrap/lib';

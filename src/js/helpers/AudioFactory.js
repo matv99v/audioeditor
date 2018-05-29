@@ -1,6 +1,3 @@
-import getFileNameFromPath from './getFileNameFromPath.js';
-
-
 export default function AudioFactory() {
     return {
         context: new window.AudioContext(),
